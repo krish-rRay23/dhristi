@@ -1,0 +1,52 @@
+# Build artifacts
+build*/
+out*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+Makefile
+*.cmake
+!cmake/*.cmake
+
+# Compiled binaries / libraries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# User / local config
+.user
+.*.user
+.clangd
+.cache/
+compile_flags.txt
+
+# Python
+__pycache__/
+*.pyc
+
+# Distribution / packaging
+dist/
+*.tar.gz
+*.zip
