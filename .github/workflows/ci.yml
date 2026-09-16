@@ -29,21 +29,33 @@ jobs:
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
 
-      - name: Setup Ninja
-        uses: scikit-build/ninja-action@v1.3
-
       - name: Install Build Dependencies (Linux)
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake
+          sudo apt-get install -y build-essential cmake ninja-build
 
-      - name: Configure CMake
+      - name: Install Build Dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          choco install ninja
+
+      - name: Configure CMake (Linux)
+        if: runner.os == 'Linux'
         run: |
           cmake -S . -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
             -DDRISHTI_BUILD_TESTS=ON \
             -DDRISHTI_BUILD_CLI=ON \
+            -DDRISHTI_ENABLE_LLVM=OFF
+
+      - name: Configure CMake (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          cmake -S . -B build -G Ninja `
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} `
+            -DDRISHTI_BUILD_TESTS=ON `
+            -DDRISHTI_BUILD_CLI=ON `
             -DDRISHTI_ENABLE_LLVM=OFF
 
       - name: Build All Targets
