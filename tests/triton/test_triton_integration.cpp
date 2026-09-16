@@ -129,8 +129,8 @@ TEST(TritonIntegration, JsonAndReportFormatting) {
     ASSERT_TRUE(rep.ok);
 
     std::string json = triton_pipeline_to_json(rep);
-    EXPECT_NE(json.find(""workload": "fused_add_relu""), std::string::npos);
-    EXPECT_NE(json.find(""artifacts""), std::string::npos);
+    EXPECT_NE(json.find("fused_add_relu"), std::string::npos);
+    EXPECT_NE(json.find("artifacts"), std::string::npos);
 
     std::string report = format_triton_pipeline_report(rep, true);
     EXPECT_NE(report.find("PHASE 18: DEEP TRITON INTEGRATION REPORT"), std::string::npos);
