@@ -48,9 +48,14 @@ std::string find_python_executable() {
 
 std::string find_compiler_script() {
     const std::vector<std::string> candidates = {
+#ifdef DRISHTI_TRITON_COMPILER_SCRIPT_PATH
+        DRISHTI_TRITON_COMPILER_SCRIPT_PATH,
+#endif
         "tools/triton/drishti_triton_compiler.py",
         "../tools/triton/drishti_triton_compiler.py",
         "../../tools/triton/drishti_triton_compiler.py",
+        "../../../tools/triton/drishti_triton_compiler.py",
+        "../../../../tools/triton/drishti_triton_compiler.py",
         "C:/Users/krish/Dhristi/tools/triton/drishti_triton_compiler.py"
     };
 

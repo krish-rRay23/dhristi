@@ -1,6 +1,7 @@
 #ifndef DRISHTI_CORE_VERSION_H
 #define DRISHTI_CORE_VERSION_H
 
+#include <string>
 #include <string_view>
 
 #include "drishti/core/config.h"
