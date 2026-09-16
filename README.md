@@ -12,7 +12,7 @@ Designed to bridge static compiler optimization decisions with empirical GPU per
 
 ---
 
-## 🚀 Key Empirical Highlights & Benchmark Results
+##  Key Empirical Highlights & Benchmark Results
 
 All results are measured on live hardware (**NVIDIA GeForce RTX 3050 Laptop GPU**, `sm_86`, 16 SMs, Ampere Architecture) and validated against a **44/44 passing CTest suite (100% success rate)**.
 
