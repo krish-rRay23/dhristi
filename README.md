@@ -121,7 +121,7 @@ flowchart TD
 - **Empirical Rigor Policy:** Only verified measurements from actual GPU execution runs are recorded as numeric values. Synthesized, interpolated, or unexecuted benchmark trials are explicitly marked as `N/A (Unexecuted)` with complete provenance tracking in `journal_experiment_results.json`.
 - **Target GPUs:**
   1. **NVIDIA Tesla T4 GPU** (`sm_75`, 16GB VRAM, Google Colab Linux Environment — **48 Verified GPU Trials**)
-  2. **NVIDIA GeForce RTX 3050 Laptop GPU** (`sm_86`, 4GB VRAM, Windows 11 — **80 Unexecuted Trials** due to PyTorch CPU local runtime)
+  2. **NVIDIA GeForce RTX 3050 Laptop GPU** (`sm_86`, 4GB VRAM, Windows 11 — **24 Verified GPU Trials** executed via Dṛṣṭi Native C++ CUDA Driver API `nvcuda.dll`)
 - **Workload Domains (10 Workloads):**
   - **GEMM:** `gemm_small` ($256^3$), `gemm_medium` ($1024^3$), `gemm_large` ($2048^3$)
   - **Attention:** `attn_short` ($N=128$), `attn_medium` ($N=512$), `attn_long` ($N=2048$)

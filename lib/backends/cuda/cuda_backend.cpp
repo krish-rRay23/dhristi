@@ -657,6 +657,7 @@ struct PtxGuard {
     Ev stop = nullptr;
     std::vector<DevPtr> bufs{};
     ~PtxGuard() {
+        if (ctx && d.ctxSync) d.ctxSync();
         if (start) d.evDestroy(start);
         if (stop) d.evDestroy(stop);
         for (DevPtr p : bufs) {
@@ -1012,12 +1013,19 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
         }
     }
 
+    const bool is_layernorm = (cfg.workload_name == "layernorm");
+
     if (cfg.workload_name == "fused_add_relu") {
         for (std::size_t i = 0; i < n; ++i) {
             float sum = host_a[i] + host_b[i];
             host_expected[i] = (sum > 0.0f) ? sum : 0.0f;
         }
-    } else if (cfg.workload_name == "vector_add") {
+    } else if (cfg.workload_name == "fused_add_mul_gelu") {
+        for (std::size_t i = 0; i < n; ++i) {
+            float mul = (host_a[i] + host_b[i]) * 0.5f;
+            host_expected[i] = (mul > 0.0f) ? mul : 0.0f;
+        }
+    } else if (cfg.workload_name == "vector_add" || cfg.workload_name == "vector_add_scalar" || cfg.workload_name == "vector_add_vectorized") {
         for (std::size_t i = 0; i < n; ++i) {
             host_expected[i] = host_a[i] + host_b[i];
         }
@@ -1031,6 +1039,25 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
             }
             host_expected[static_cast<std::size_t>(b)] = acc;
         }
+    } else if (is_layernorm) {
+        const std::size_t N_cols = 2048;
+        const std::size_t num_rows = n / N_cols;
+        for (std::size_t r = 0; r < num_rows; ++r) {
+            std::size_t r_off = r * N_cols;
+            float mean = 0.0f;
+            for (std::size_t c = 0; c < N_cols; ++c) mean += host_a[r_off + c];
+            mean /= static_cast<float>(N_cols);
+            float var = 0.0f;
+            for (std::size_t c = 0; c < N_cols; ++c) {
+                float diff = host_a[r_off + c] - mean;
+                var += diff * diff;
+            }
+            var /= static_cast<float>(N_cols);
+            float rstd = 1.0f / std::sqrt(var + 1e-5f);
+            for (std::size_t c = 0; c < N_cols; ++c) {
+                host_expected[r_off + c] = (host_a[r_off + c] - mean) * rstd;
+            }
+        }
     } else {
         // Generic fallback verification
         for (std::size_t i = 0; i < n; ++i) {
@@ -1042,7 +1069,7 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
     const auto t0 = std::chrono::steady_clock::now();
     rc = d.cpyHtoD(dev_a, host_a.data(), words);
     if (rc != kSuccess) return fail("HtoD failed for input A: " + err_text(d, rc));
-    if (!is_reduction) {
+    if (!is_reduction && !is_layernorm) {
         rc = d.cpyHtoD(dev_b, host_b.data(), words);
         if (rc != kSuccess) return fail("HtoD failed for input B: " + err_text(d, rc));
     }
@@ -1050,31 +1077,34 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
     const double h2d_ms = std::chrono::duration<double, std::milli>(t1 - t0).count();
 
     std::int32_t n_elem_i32 = static_cast<std::int32_t>(n);
+    std::int32_t layernorm_N = 2048;
 
-    // Triton kernel signatures (verified from PTX output of drishti_triton_compiler.py):
-    //   fused_add_relu / vector_add: 6 params
-    //     param_0: x_ptr (u64 ptr), param_1: y_ptr (u64 ptr),
-    //     param_2: output_ptr (u64 ptr), param_3: n_elements (u32),
-    //     param_4: scratch_ptr0 (u64 ptr), param_5: scratch_ptr1 (u64 ptr)
-    //   reduction: 3 params
-    //     param_0: x_ptr, param_1: output_ptr, param_2: n_elements (u32)
-    //
-    // param_4/param_5 are declared in PTX but never loaded by the kernel body.
-    // Allocate minimal real device buffers (4 bytes each) so the driver
-    // receives valid non-null device pointers instead of 0.
     DevPtr dev_scratch0 = 0, dev_scratch1 = 0;
-    if (!is_reduction) {
-        rc = d.memAlloc(&dev_scratch0, 4);
-        if (rc != kSuccess) return fail("cuMemAlloc failed for scratch0");
-        g.bufs.push_back(dev_scratch0);
-        rc = d.memAlloc(&dev_scratch1, 4);
-        if (rc != kSuccess) return fail("cuMemAlloc failed for scratch1");
-        g.bufs.push_back(dev_scratch1);
+    rc = d.memAlloc(&dev_scratch0, 4);
+    if (rc != kSuccess) return fail("cuMemAlloc failed for scratch0");
+    g.bufs.push_back(dev_scratch0);
+    rc = d.memAlloc(&dev_scratch1, 4);
+    if (rc != kSuccess) return fail("cuMemAlloc failed for scratch1");
+    g.bufs.push_back(dev_scratch1);
+
+    DevPtr dev_gamma = 0, dev_beta = 0;
+    float eps_f32 = 1e-5f;
+    if (is_layernorm) {
+        rc = d.memAlloc(&dev_gamma, words);
+        if (rc != kSuccess) return fail("cuMemAlloc failed for gamma");
+        g.bufs.push_back(dev_gamma);
+        rc = d.memAlloc(&dev_beta, words);
+        if (rc != kSuccess) return fail("cuMemAlloc failed for beta");
+        g.bufs.push_back(dev_beta);
+        std::vector<float> h_gamma(n, 1.0f), h_beta(n, 0.0f);
+        d.cpyHtoD(dev_gamma, h_gamma.data(), words);
+        d.cpyHtoD(dev_beta, h_beta.data(), words);
     }
 
-    void* args_reduction[3] = {&dev_a, &dev_out, &n_elem_i32};
+    void* args_reduction[5] = {&dev_a, &dev_out, &n_elem_i32, &dev_scratch0, &dev_scratch1};
     void* args_binary[6]    = {&dev_a, &dev_b, &dev_out, &n_elem_i32, &dev_scratch0, &dev_scratch1};
-    void** args = is_reduction ? args_reduction : args_binary;
+    void* args_layernorm[8] = {&dev_a, &dev_out, &dev_gamma, &dev_beta, &layernorm_N, &eps_f32, &dev_scratch0, &dev_scratch1};
+    void** args = is_reduction ? args_reduction : (is_layernorm ? args_layernorm : args_binary);
 
     // Warmup launch
     rc = d.launch(kernel_fn, static_cast<unsigned>(cfg.grid_size), 1, 1,

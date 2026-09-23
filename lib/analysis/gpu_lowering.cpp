@@ -136,7 +136,8 @@ void register_gpu_pipeline_passes() {
 
 namespace {
 
-void ensure_initialized() {
+const mlir::DialectRegistry& get_gpu_lowering_registry() {
+    static mlir::DialectRegistry registry;
     static std::once_flag once;
     std::call_once(once, [] {
         register_gpu_pipeline_passes();
@@ -145,7 +146,17 @@ void ensure_initialized() {
         LLVMInitializeNVPTXTarget();
         LLVMInitializeNVPTXTargetMC();
         LLVMInitializeNVPTXAsmPrinter();
+
+        registry.insert<mlir::BuiltinDialect, mlir::func::FuncDialect,
+                        mlir::arith::ArithDialect, mlir::memref::MemRefDialect,
+                        mlir::affine::AffineDialect, mlir::scf::SCFDialect,
+                        mlir::gpu::GPUDialect>();
+        mlir::registerBuiltinDialectTranslation(registry);
+        mlir::registerGPUDialectTranslation(registry);
+        mlir::registerLLVMDialectTranslation(registry);
+        mlir::registerNVVMDialectTranslation(registry);
     });
+    return registry;
 }
 
 std::vector<std::string> scrape_entries(const std::string& ptx) {
@@ -220,18 +231,8 @@ LoweredKernels lower_to_ptx(std::string_view source, std::string_view pipeline,
         if (err) *err = msg;
         return out;
     };
-    ensure_initialized();
 
-    mlir::DialectRegistry registry;
-    registry.insert<mlir::BuiltinDialect, mlir::func::FuncDialect,
-                    mlir::arith::ArithDialect, mlir::memref::MemRefDialect,
-                    mlir::affine::AffineDialect, mlir::scf::SCFDialect,
-                    mlir::gpu::GPUDialect>();
-    mlir::registerBuiltinDialectTranslation(registry);
-    mlir::registerGPUDialectTranslation(registry);
-    mlir::registerLLVMDialectTranslation(registry);
-    mlir::registerNVVMDialectTranslation(registry);
-
+    const auto& registry = get_gpu_lowering_registry();
     mlir::MLIRContext ctx(registry);
     ctx.allowUnregisteredDialects(true);
     ctx.loadAllAvailableDialects();

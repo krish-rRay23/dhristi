@@ -25,6 +25,25 @@ def fused_add_relu_kernel(
     tl.store(output_ptr + offsets, relu, mask=mask)
 
 @triton.jit
+def fused_add_mul_gelu_kernel(
+    x_ptr,
+    y_ptr,
+    output_ptr,
+    n_elements,
+    BLOCK_SIZE: tl.constexpr,
+):
+    pid = tl.program_id(axis=0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+    x = tl.load(x_ptr + offsets, mask=mask)
+    y = tl.load(y_ptr + offsets, mask=mask)
+    added = x + y
+    mul = added * 0.5
+    gelu = tl.maximum(mul, 0.0)
+    tl.store(output_ptr + offsets, gelu, mask=mask)
+
+@triton.jit
 def vector_add_kernel(
     x_ptr,
     y_ptr,
@@ -86,9 +105,40 @@ def reduction_kernel(
     acc = tl.sum(x, axis=0)
     tl.store(output_ptr + pid, acc)
 
+@triton.jit
+def layernorm_kernel(
+    x_ptr,
+    output_ptr,
+    gamma_ptr,
+    beta_ptr,
+    N,
+    eps,
+    BLOCK_SIZE: tl.constexpr,
+):
+    row_idx = tl.program_id(0)
+    row_start_ptr = x_ptr + row_idx * N
+    out_row_start_ptr = output_ptr + row_idx * N
+    cols = tl.arange(0, BLOCK_SIZE)
+    mask = cols < N
+
+    x = tl.load(row_start_ptr + cols, mask=mask, other=0.0)
+    mean = tl.sum(x, axis=0) / N
+    var = tl.sum((x - mean) * (x - mean), axis=0) / N
+    rstd = 1.0 / tl.sqrt(var + eps)
+
+    gamma = tl.load(gamma_ptr + cols, mask=mask, other=1.0)
+    beta = tl.load(beta_ptr + cols, mask=mask, other=0.0)
+    norm = (x - mean) * rstd * gamma + beta
+    tl.store(out_row_start_ptr + cols, norm, mask=mask)
+
 KERNELS = {
     "fused_add_relu": (
         fused_add_relu_kernel,
+        {"BLOCK_SIZE": 256},
+        {"x_ptr": "*fp32", "y_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "fused_add_mul_gelu": (
+        fused_add_mul_gelu_kernel,
         {"BLOCK_SIZE": 256},
         {"x_ptr": "*fp32", "y_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
     ),
@@ -112,6 +162,11 @@ KERNELS = {
         {"BLOCK_SIZE": 256},
         {"x_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
     ),
+    "layernorm": (
+        layernorm_kernel,
+        {"BLOCK_SIZE": 2048},
+        {"x_ptr": "*fp32", "output_ptr": "*fp32", "gamma_ptr": "*fp32", "beta_ptr": "*fp32", "N": "i32", "eps": "fp32"},
+    )
 }
 
 def compile_workload(workload_name="fused_add_relu", block_size=256, num_warps=4, num_stages=2, arch=86):
@@ -120,6 +175,8 @@ def compile_workload(workload_name="fused_add_relu", block_size=256, num_warps=4
     
     fn, constexprs, signature = KERNELS[workload_name]
     constexprs = dict(constexprs)
+    if workload_name == "layernorm" and block_size == 256:
+        block_size = 2048
     constexprs["BLOCK_SIZE"] = block_size
 
     target = GPUTarget("cuda", arch, 32)
