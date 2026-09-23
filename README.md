@@ -48,8 +48,36 @@ Empirical benchmarks collected via `drishti benchmark --full` on **RTX 3050 GPU 
 | `fused_add_relu` | $256 \\times 256$ ($65,536$ el) | **$0.0812\\text{ ms}$** | **$28.94\\text{ GB/s}$** | N/A | Memory-Bound (VRAM Coalesced) | `PASS` |
 | `vector_add_vectorized` | $65,536$ elements | **$0.0967\\text{ ms}$** | **$24.11\\text{ GB/s}$** | N/A | Memory-Bound (Vectorized 128-bit) | `PASS` |
 | `vector_add_scalar` | $65,536$ elements | **$0.1438\\text{ ms}$** | **$16.20\\text{ GB/s}$** | N/A | Memory-Bound (Scalar Access) | `PASS` |
-| `matmul_tiled_16x16` | $256 \\times 256 \\times 256$ | **$0.1945\\text{ ms}$** | **$12.40\\text{ GB/s}$** | **$108.5\\text{ GFLOPS}$** | Balanced / Shared Memory Bandwidth | `PASS` |
-| `conv2d_nchw_3x3` | $1 \\times 32 \\times 64 \\times 64$ | **$0.3412\\text{ ms}$** | **$9.85\\text{ GB/s}$** | **$142.1\\text{ GFLOPS}$** | Compute-Bound (Tensor Core Eligible) | `PASS` |
+| `matmul_tiled_16x16` | $256 \times 256 \times 256$ | **$0.1945\text{ ms}$** | **$12.40\text{ GB/s}$** | **$108.5\text{ GFLOPS}$** | Balanced / Shared Memory Bandwidth | `PASS` |
+| `conv2d_nchw_3x3` | $1 \times 32 \times 64 \times 64$ | **$0.3412\text{ ms}$** | **$9.85\text{ GB/s}$** | **$142.1\text{ GFLOPS}$** | Compute-Bound (Tensor Core Eligible) | `PASS` |
+
+---
+
+## 🧪 Journal Study: NVIDIA Tesla T4 (`sm_75`, Google Colab) Benchmarks
+
+Empirical benchmark execution results collected directly from Google Colab on an **NVIDIA Tesla T4 GPU** (`sm_75`, 40 SMs, Turing Architecture) via [`notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb`](file:///C:/Users/krish/Dhristi/notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb):
+
+| Workload Domain | System / Evaluation Target | Latency ($\text{ms}$) | Speedup vs Baseline | VRAM Bandwidth ($\text{GB/s}$) | Correctness |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **`gemm_small`** ($256^3$) | Standard Triton | $0.0912\text{ ms}$ | $1.00\times$ | $8.62\text{ GB/s}$ | `PASS` |
+| | Triton + Autotune | $0.2630\text{ ms}$ | $0.35\times$ | $2.99\text{ GB/s}$ | `PASS` |
+| | Full Drishti | $0.2625\text{ ms}$ | $0.35\times$ | $3.00\text{ GB/s}$ | `PASS` |
+| | **Drishti - Vectorization** | **$0.0611\text{ ms}$** | **$1.49\times$** | **$12.90\text{ GB/s}$** | `PASS` |
+| **`gemm_medium`** ($1024^3$) | Standard Triton | $0.8349\text{ ms}$ | $1.00\times$ | $15.07\text{ GB/s}$ | `PASS` |
+| | Triton + Autotune | $0.7684\text{ ms}$ | $1.09\times$ | $16.37\text{ GB/s}$ | `PASS` |
+| | Full Drishti | $0.7668\text{ ms}$ | $1.09\times$ | $16.41\text{ GB/s}$ | `PASS` |
+| | **Drishti - IR Analysis** | **$0.6086\text{ ms}$** | **$1.37\times$** | **$20.70\text{ GB/s}$** | `PASS` |
+| **`gemm_large`** ($2048^3$) | Standard Triton | $5.1804\text{ ms}$ | $1.00\times$ | $9.72\text{ GB/s}$ | `PASS` |
+| | Triton + Autotune | $4.8421\text{ ms}$ | $1.07\times$ | $10.39\text{ GB/s}$ | `PASS` |
+| | Full Drishti | $4.8853\text{ ms}$ | $1.06\times$ | $10.30\text{ GB/s}$ | `PASS` |
+| **`fused_add_relu`** ($262K$) | Standard Triton | $0.0433\text{ ms}$ | $1.00\times$ | $72.71\text{ GB/s}$ | `PASS` |
+| | **Drishti - IR Analysis** | **$0.0405\text{ ms}$** | **$1.07\times$** | **$77.60\text{ GB/s}$** | `PASS` |
+| **`reduction`** ($1M$) | Standard Triton | $0.0403\text{ ms}$ | $1.00\times$ | $104.12\text{ GB/s}$ | `PASS` |
+| | Triton + Autotune | $0.0347\text{ ms}$ | $1.16\times$ | $120.87\text{ GB/s}$ | `PASS` |
+| | **Full Drishti** | **$0.0316\text{ ms}$** | **$1.28\times$** | **$132.50\text{ GB/s}$** | `PASS` |
+| **`layernorm`** ($128 \times 2048$) | Standard Triton | $0.0417\text{ ms}$ | $1.00\times$ | $50.33\text{ GB/s}$ | `PASS` |
+| | Triton + Autotune | $0.0381\text{ ms}$ | $1.09\times$ | $55.03\text{ GB/s}$ | `PASS` |
+| | Full Drishti | $0.0382\text{ ms}$ | $1.09\times$ | $54.87\text{ GB/s}$ | `PASS` |
 
 ---
 
