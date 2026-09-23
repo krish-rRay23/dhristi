@@ -11,17 +11,27 @@ import re
 
 def audit_dataset():
     nb_path = "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb"
+    if not os.path.exists(nb_path):
+        nb_path = "notebooks/Runned_Drishti_Journal_Benchmark_Suite (2).ipynb"
+
     t4_measured_data = {}
     if os.path.exists(nb_path):
         with open(nb_path, "r", encoding="utf-8") as f:
             nb = json.load(f)
-        cell3_text = "".join(nb["cells"][3]["outputs"][0]["text"])
+
+        all_text = ""
+        for cell in nb.get("cells", []):
+            for out in cell.get("outputs", []):
+                text_lines = out.get("text", [])
+                text_str = "".join(text_lines)
+                if "Evaluating Workload Domain:" in text_str:
+                    all_text += text_str + "\n"
 
         workload_header_re = re.compile(r"Evaluating Workload Domain:\s*\[(.*?)\]")
         sys_line_re = re.compile(r"System\s*\[(.*?)\]\s*Latency:\s*([\d\.]+)\s*ms\s*\|\s*Speedup:\s*([\d\.]+)x\s*\|\s*BW:\s*([\d\.]+)\s*GB/s\s*\|\s*Correct:\s*(True|False)")
         abl_line_re = re.compile(r"Ablation\s*\[(.*?)\]\s*Latency:\s*([\d\.]+)\s*ms\s*\|\s*Speedup:\s*([\d\.]+)x")
 
-        lines = cell3_text.splitlines()
+        lines = all_text.splitlines()
         current_workload = None
 
         for line in lines:

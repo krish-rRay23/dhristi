@@ -155,7 +155,8 @@ const mlir::DialectRegistry& get_gpu_lowering_registry() {
         registry.insert<mlir::BuiltinDialect, mlir::func::FuncDialect,
                         mlir::arith::ArithDialect, mlir::memref::MemRefDialect,
                         mlir::affine::AffineDialect, mlir::scf::SCFDialect,
-                        mlir::gpu::GPUDialect>();
+                        mlir::gpu::GPUDialect, mlir::LLVM::LLVMDialect,
+                        mlir::NVVM::NVVMDialect>();
         mlir::registerBuiltinDialectTranslation(registry);
         mlir::registerGPUDialectTranslation(registry);
         mlir::registerLLVMDialectTranslation(registry);
