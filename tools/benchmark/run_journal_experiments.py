@@ -148,6 +148,22 @@ if HAS_TRITON and HAS_TORCH:
         norm = (x - mean) * rstd * gamma + beta
         tl.store(out_row_start_ptr + cols, norm, mask=mask)
 
+    # 5. Fused Add-Mul-GELU Kernel
+    @triton.jit
+    def triton_fused_add_mul_gelu_kernel(
+        x_ptr, y_ptr, out_ptr, n_elements,
+        BLOCK_SIZE: tl.constexpr
+    ):
+        pid = tl.program_id(axis=0)
+        offsets = pid * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)
+        mask = offsets < n_elements
+        x = tl.load(x_ptr + offsets, mask=mask)
+        y = tl.load(y_ptr + offsets, mask=mask)
+        val = (x + y) * 0.5
+        cdf = 0.5 * (1.0 + tl.tanh(0.7978845608 * (val + 0.044715 * val * val * val)))
+        gelu = val * cdf
+        tl.store(out_ptr + offsets, gelu, mask=mask)
+
 # -----------------------------------------------------------------------------
 # Workload Runner & Measurement Infrastructure
 # -----------------------------------------------------------------------------
@@ -331,6 +347,43 @@ def run_workload_experiment(
         max_err = (C - ref_out).abs().max().item()
         bytes_moved = 3 * N * N * 4
 
+    elif "attn" in workload_id:
+        size_map = {"attn_short": 128, "attn_medium": 512, "attn_long": 2048}
+        N = size_map.get(workload_id, 512)
+        B, H, D = 1, 8, 64
+        Q = torch.randn((B, H, N, D), device='cuda', dtype=torch.float32)
+        K = torch.randn((B, H, N, D), device='cuda', dtype=torch.float32)
+        V = torch.randn((B, H, N, D), device='cuda', dtype=torch.float32)
+        Out = torch.empty((B, H, N, D), device='cuda', dtype=torch.float32)
+
+        def run_fn():
+            res = torch.nn.functional.scaled_dot_product_attention(Q, K, V)
+            Out.copy_(res)
+
+        ref_out = torch.nn.functional.scaled_dot_product_attention(Q, K, V)
+        run_fn()
+        torch.cuda.synchronize()
+        correct = torch.allclose(Out, ref_out, atol=1e-2, rtol=1e-2)
+        max_err = (Out - ref_out).abs().max().item()
+        bytes_moved = 4 * B * H * N * D * 4
+
+    elif "fused_add_mul_gelu" in workload_id:
+        N = 262144
+        X = torch.randn(N, device='cuda', dtype=torch.float32)
+        Y = torch.randn(N, device='cuda', dtype=torch.float32)
+        Out = torch.empty(N, device='cuda', dtype=torch.float32)
+
+        def run_fn():
+            grid = (triton.cdiv(N, 1024), )
+            triton_fused_add_mul_gelu_kernel[grid](X, Y, Out, N, BLOCK_SIZE=1024)
+
+        ref_out = torch.nn.functional.gelu((X + Y) * 0.5, approximate='tanh')
+        run_fn()
+        torch.cuda.synchronize()
+        correct = torch.allclose(Out, ref_out, atol=1e-2, rtol=1e-2)
+        max_err = (Out - ref_out).abs().max().item()
+        bytes_moved = 3 * N * 4
+
     elif "fused_add_relu" in workload_id or "elementwise" in workload_id:
         N = 1048576 if "large" in workload_id else 262144
         X = torch.randn(N, device='cuda', dtype=torch.float32)
@@ -425,7 +478,9 @@ def run_workload_experiment(
 def run_journal_benchmark_suite() -> Dict[str, Any]:
     workloads = [
         "gemm_small", "gemm_medium", "gemm_large",
-        "fused_add_relu", "reduction", "layernorm"
+        "attn_short", "attn_medium", "attn_long",
+        "fused_add_relu", "fused_add_mul_gelu",
+        "reduction", "layernorm"
     ]
     systems = ["Standard Triton", "Triton + Autotune", "Full Drishti"]
     ablations = [

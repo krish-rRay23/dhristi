@@ -69,6 +69,8 @@ std::string fusion_transformed_pipeline() {
 #include "mlir/Dialect/Func/IR/FuncOps.h"
 #include "mlir/Dialect/GPU/IR/GPUDialect.h"
 #include "mlir/Dialect/GPU/Transforms/Passes.h"
+#include "mlir/Dialect/LLVMIR/LLVMDialect.h"
+#include "mlir/Dialect/LLVMIR/NVVMDialect.h"
 #include "mlir/Dialect/MemRef/IR/MemRef.h"
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/IR/BuiltinAttributes.h"
@@ -122,16 +124,19 @@ namespace mlir {
 namespace drishti::analysis {
 
 void register_gpu_pipeline_passes() {
-    mlir::registerTransformsPasses();
-    mlir::registerConvertAffineForToGPUPass();
-    mlir::registerConvertGpuOpsToNVVMOps();
-    mlir::registerGpuKernelOutliningPass();
-    mlir::affine::registerAffinePasses();
-    mlir::registerLowerAffinePass();
-    mlir::registerArithToLLVMConversionPass();
-    mlir::registerConvertIndexToLLVMPass();
-    mlir::registerFinalizeMemRefToLLVMConversionPass();
-    mlir::registerReconcileUnrealizedCastsPass();
+    static std::once_flag pass_once;
+    std::call_once(pass_once, [] {
+        mlir::registerTransformsPasses();
+        mlir::registerConvertAffineForToGPUPass();
+        mlir::registerConvertGpuOpsToNVVMOps();
+        mlir::registerGpuKernelOutliningPass();
+        mlir::affine::registerAffinePasses();
+        mlir::registerLowerAffinePass();
+        mlir::registerArithToLLVMConversionPass();
+        mlir::registerConvertIndexToLLVMPass();
+        mlir::registerFinalizeMemRefToLLVMConversionPass();
+        mlir::registerReconcileUnrealizedCastsPass();
+    });
 }
 
 namespace {
