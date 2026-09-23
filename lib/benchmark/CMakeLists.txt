@@ -1,5 +1,6 @@
 add_library(drishti_benchmark STATIC
     benchmark.cpp
+    journal_experiments.cpp
 )
 
 target_link_libraries(drishti_benchmark PUBLIC drishti_common drishti_core drishti_profiling drishti_diagnosis drishti_optimizer drishti_backends)

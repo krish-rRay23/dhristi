@@ -15,6 +15,7 @@
 #include "drishti/diagnosis/root_cause.h"
 #include "drishti/diagnosis/cross_vendor.h"
 #include "drishti/benchmark/benchmark.h"
+#include "drishti/benchmark/journal_experiments.h"
 #include "drishti/optimizer/compiler_experiment.h"
 #include "drishti/optimizer/cost_model.h"
 #include "drishti/optimizer/search.h"
@@ -973,6 +974,21 @@ int main(int argc, char** argv) {
     }
     if (a == "benchmark") {
         return cmd_benchmark(args);
+    }
+    if (a == "journal-experiment") {
+        bool json_only = false;
+        while (!args.empty()) {
+            const std::string opt = args.front();
+            args = args.subspan(1);
+            if (opt == "--json-only" || opt == "--json") json_only = true;
+        }
+        const auto rep = drishti::benchmark::run_journal_experiments();
+        if (json_only) {
+            std::cout << drishti::benchmark::journal_report_to_json(rep);
+        } else {
+            std::cout << drishti::benchmark::format_journal_report(rep);
+        }
+        return rep.ok ? EXIT_SUCCESS : EXIT_FAILURE;
     }
     if (a == "llvm") {
         return cmd_llvm(args);

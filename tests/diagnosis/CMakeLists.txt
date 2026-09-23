@@ -11,5 +11,4 @@ target_link_libraries(test_diagnosis PUBLIC
     GTest::gtest_main
 )
 
-add_test(NAME test_diagnosis COMMAND test_diagnosis)
-set_tests_properties(test_diagnosis PROPERTIES RUN_SERIAL TRUE)
+gtest_discover_tests(test_diagnosis PROPERTIES RUN_SERIAL TRUE)
