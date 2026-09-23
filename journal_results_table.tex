@@ -1,8 +1,9 @@
-% Drishti Journal Benchmark Suite - Cross-System & Ablation Performance
+% Drishti Journal Research Benchmark Matrix - Audited Dataset
+% Provenance: Notebook Cell 3 (Tesla T4) & Local Audit Logs
 \begin{table*}[htbp]
 \centering
-\caption{Cross-System Performance, Bandwidth, and Ablation Analysis across NVIDIA RTX 3050 Laptop GPU and NVIDIA Tesla T4.}
-\label{tab:drishti_journal_results_complete}
+\caption{Cross-System Performance, Bandwidth, and Ablation Analysis across NVIDIA Tesla T4 and NVIDIA RTX 3050 Laptop GPU. Values marked N/A represent unexecuted trials to ensure strict empirical integrity.}
+\label{tab:drishti_journal_results_audited}
 \small
 \begin{tabular}{lllrrrc}
 \hline
@@ -32,30 +33,30 @@ Tesla T4 & gemm_large & Drishti - Vectorization & 5.1190 & 1.01\times & 9.8 & PA
 Tesla T4 & gemm_large & Drishti - Kernel Fusion & 4.9085 & 1.06\times & 10.2 & PASS \\
 Tesla T4 & gemm_large & Drishti - IR Analysis & 4.9123 & 1.05\times & 10.2 & PASS \\
 Tesla T4 & gemm_large & Drishti - Hardware Telemetry & 4.9408 & 1.05\times & 10.2 & PASS \\
-Tesla T4 & attn_short & Standard Triton & 0.1250 & 1.00\times & 12.5 & PASS \\
-Tesla T4 & attn_short & Triton + Autotune & 0.0984 & 1.27\times & 15.9 & PASS \\
-Tesla T4 & attn_short & Full Drishti & 0.0892 & \textbf{1.40\times} & 17.5 & PASS \\
-Tesla T4 & attn_short & Full Drishti & 0.0895 & \textbf{1.40\times} & 17.5 & PASS \\
-Tesla T4 & attn_short & Drishti - Vectorization & 0.1245 & 1.00\times & 12.6 & PASS \\
-Tesla T4 & attn_short & Drishti - Kernel Fusion & 0.1412 & 0.89\times & 11.1 & PASS \\
-Tesla T4 & attn_short & Drishti - IR Analysis & 0.0950 & \textbf{1.32\times} & 16.4 & PASS \\
-Tesla T4 & attn_short & Drishti - Hardware Telemetry & 0.0820 & \textbf{1.52\times} & 19.1 & PASS \\
-Tesla T4 & attn_medium & Standard Triton & 0.3420 & 1.00\times & 14.1 & PASS \\
-Tesla T4 & attn_medium & Triton + Autotune & 0.2650 & 1.29\times & 18.2 & PASS \\
-Tesla T4 & attn_medium & Full Drishti & 0.2450 & \textbf{1.40\times} & 19.7 & PASS \\
-Tesla T4 & attn_medium & Full Drishti & 0.2448 & \textbf{1.40\times} & 19.7 & PASS \\
-Tesla T4 & attn_medium & Drishti - Vectorization & 0.3415 & 1.00\times & 14.1 & PASS \\
-Tesla T4 & attn_medium & Drishti - Kernel Fusion & 0.3850 & 0.89\times & 12.6 & PASS \\
-Tesla T4 & attn_medium & Drishti - IR Analysis & 0.2580 & \textbf{1.33\times} & 18.7 & PASS \\
-Tesla T4 & attn_medium & Drishti - Hardware Telemetry & 0.2310 & \textbf{1.48\times} & 20.9 & PASS \\
-Tesla T4 & attn_long & Standard Triton & 0.8920 & 1.00\times & 15.8 & PASS \\
-Tesla T4 & attn_long & Triton + Autotune & 0.6850 & 1.30\times & 20.6 & PASS \\
-Tesla T4 & attn_long & Full Drishti & 0.6210 & \textbf{1.44\times} & 22.7 & PASS \\
-Tesla T4 & attn_long & Full Drishti & 0.6205 & \textbf{1.44\times} & 22.7 & PASS \\
-Tesla T4 & attn_long & Drishti - Vectorization & 0.8910 & 1.00\times & 15.8 & PASS \\
-Tesla T4 & attn_long & Drishti - Kernel Fusion & 1.0120 & 0.88\times & 13.9 & PASS \\
-Tesla T4 & attn_long & Drishti - IR Analysis & 0.6650 & \textbf{1.34\times} & 21.2 & PASS \\
-Tesla T4 & attn_long & Drishti - Hardware Telemetry & 0.5980 & \textbf{1.49\times} & 23.6 & PASS \\
+Tesla T4 & attn_short & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_short & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_medium & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & attn_long & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
 Tesla T4 & fused_add_relu & Standard Triton & 0.0433 & 1.00\times & 72.7 & PASS \\
 Tesla T4 & fused_add_relu & Triton + Autotune & 0.0692 & 0.63\times & 45.5 & PASS \\
 Tesla T4 & fused_add_relu & Full Drishti & 0.0679 & 0.64\times & 46.3 & PASS \\
@@ -63,22 +64,22 @@ Tesla T4 & fused_add_relu & Full Drishti & 0.0844 & 0.51\times & 37.3 & PASS \\
 Tesla T4 & fused_add_relu & Drishti - Vectorization & 0.0434 & 1.00\times & 72.5 & PASS \\
 Tesla T4 & fused_add_relu & Drishti - Kernel Fusion & 0.0650 & 0.67\times & 48.4 & PASS \\
 Tesla T4 & fused_add_relu & Drishti - IR Analysis & 0.0405 & 1.07\times & 77.7 & PASS \\
-Tesla T4 & fused_add_relu & Drishti - Hardware Telemetry & 0.0349 & 1.24\times & 90.2 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Standard Triton & 0.0612 & 1.00\times & 51.4 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Triton + Autotune & 0.0754 & 0.81\times & 41.8 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Full Drishti & 0.0721 & 0.85\times & 43.7 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Full Drishti & 0.0718 & 0.85\times & 43.7 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Drishti - Vectorization & 0.0615 & 1.00\times & 51.2 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Drishti - Kernel Fusion & 0.0890 & 0.69\times & 35.4 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Drishti - IR Analysis & 0.0542 & 1.13\times & 58.1 & PASS \\
-Tesla T4 & fused_add_mul_gelu & Drishti - Hardware Telemetry & 0.0485 & 1.26\times & 64.9 & PASS \\
+Tesla T4 & fused_add_relu & Drishti - Hardware Telemetry & 0.0349 & \textbf{1.24\times} & 90.1 & PASS \\
+Tesla T4 & fused_add_mul_gelu & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+Tesla T4 & fused_add_mul_gelu & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
 Tesla T4 & sum_reduction & Standard Triton & 0.0403 & 1.00\times & 104.1 & PASS \\
 Tesla T4 & sum_reduction & Triton + Autotune & 0.0347 & 1.16\times & 120.9 & PASS \\
 Tesla T4 & sum_reduction & Full Drishti & 0.0352 & 1.14\times & 119.2 & PASS \\
-Tesla T4 & sum_reduction & Full Drishti & 0.0316 & 1.28\times & 132.8 & PASS \\
+Tesla T4 & sum_reduction & Full Drishti & 0.0316 & \textbf{1.28\times} & 132.9 & PASS \\
 Tesla T4 & sum_reduction & Drishti - Vectorization & 0.0344 & 1.17\times & 122.0 & PASS \\
-Tesla T4 & sum_reduction & Drishti - Kernel Fusion & 0.0337 & 1.20\times & 124.5 & PASS \\
-Tesla T4 & sum_reduction & Drishti - IR Analysis & 0.0347 & 1.16\times & 120.9 & PASS \\
+Tesla T4 & sum_reduction & Drishti - Kernel Fusion & 0.0337 & 1.20\times & 124.6 & PASS \\
+Tesla T4 & sum_reduction & Drishti - IR Analysis & 0.0347 & 1.16\times & 121.0 & PASS \\
 Tesla T4 & sum_reduction & Drishti - Hardware Telemetry & 0.0272 & \textbf{1.48\times} & 154.3 & PASS \\
 Tesla T4 & layernorm & Standard Triton & 0.0417 & 1.00\times & 50.3 & PASS \\
 Tesla T4 & layernorm & Triton + Autotune & 0.0381 & 1.09\times & 55.0 & PASS \\
@@ -87,88 +88,88 @@ Tesla T4 & layernorm & Full Drishti & 0.0423 & 0.99\times & 49.6 & PASS \\
 Tesla T4 & layernorm & Drishti - Vectorization & 0.0368 & 1.13\times & 57.0 & PASS \\
 Tesla T4 & layernorm & Drishti - Kernel Fusion & 0.0364 & 1.15\times & 57.6 & PASS \\
 Tesla T4 & layernorm & Drishti - IR Analysis & 0.0403 & 1.03\times & 52.0 & PASS \\
-Tesla T4 & layernorm & Drishti - Hardware Telemetry & 0.0328 & 1.27\times & 64.0 & PASS \\
+Tesla T4 & layernorm & Drishti - Hardware Telemetry & 0.0328 & \textbf{1.27\times} & 63.9 & PASS \\
 \hline
-RTX 3050 & gemm_small & Standard Triton & 0.1586 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_small & Triton + Autotune & 0.1205 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & gemm_small & Full Drishti & 0.1066 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_small & Full Drishti & 0.1066 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_small & Drishti - Vectorization & 0.1586 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_small & Drishti - Kernel Fusion & 0.2042 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & gemm_small & Drishti - IR Analysis & 0.1196 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & gemm_small & Drishti - Hardware Telemetry & 0.1093 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & gemm_medium & Standard Triton & 0.4210 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_medium & Triton + Autotune & 0.3200 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & gemm_medium & Full Drishti & 0.2829 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_medium & Full Drishti & 0.2829 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_medium & Drishti - Vectorization & 0.4210 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_medium & Drishti - Kernel Fusion & 0.5422 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & gemm_medium & Drishti - IR Analysis & 0.3174 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & gemm_medium & Drishti - Hardware Telemetry & 0.2901 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & gemm_large & Standard Triton & 1.8540 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_large & Triton + Autotune & 1.4090 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & gemm_large & Full Drishti & 1.2459 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_large & Full Drishti & 1.2459 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & gemm_large & Drishti - Vectorization & 1.8540 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & gemm_large & Drishti - Kernel Fusion & 2.3880 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & gemm_large & Drishti - IR Analysis & 1.3979 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & gemm_large & Drishti - Hardware Telemetry & 1.2774 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & attn_short & Standard Triton & 0.1502 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_short & Triton + Autotune & 0.1142 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & attn_short & Full Drishti & 0.1009 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_short & Full Drishti & 0.1009 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_short & Drishti - Vectorization & 0.1502 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_short & Drishti - Kernel Fusion & 0.1935 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & attn_short & Drishti - IR Analysis & 0.1133 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & attn_short & Drishti - Hardware Telemetry & 0.1035 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & attn_medium & Standard Triton & 0.3850 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_medium & Triton + Autotune & 0.2926 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & attn_medium & Full Drishti & 0.2587 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_medium & Full Drishti & 0.2587 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_medium & Drishti - Vectorization & 0.3850 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_medium & Drishti - Kernel Fusion & 0.4959 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & attn_medium & Drishti - IR Analysis & 0.2903 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & attn_medium & Drishti - Hardware Telemetry & 0.2653 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & attn_long & Standard Triton & 0.9410 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_long & Triton + Autotune & 0.7152 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & attn_long & Full Drishti & 0.6324 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_long & Full Drishti & 0.6324 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & attn_long & Drishti - Vectorization & 0.9410 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & attn_long & Drishti - Kernel Fusion & 1.2120 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & attn_long & Drishti - IR Analysis & 0.7095 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & attn_long & Drishti - Hardware Telemetry & 0.6483 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & fused_add_relu & Standard Triton & 0.1438 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & fused_add_relu & Triton + Autotune & 0.1093 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & fused_add_relu & Full Drishti & 0.0966 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & fused_add_relu & Full Drishti & 0.0966 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & fused_add_relu & Drishti - Vectorization & 0.1438 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & fused_add_relu & Drishti - Kernel Fusion & 0.1852 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & fused_add_relu & Drishti - IR Analysis & 0.1084 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & fused_add_relu & Drishti - Hardware Telemetry & 0.0991 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Standard Triton & 0.1949 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Triton + Autotune & 0.1481 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Full Drishti & 0.1310 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Full Drishti & 0.1310 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Drishti - Vectorization & 0.1949 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Drishti - Kernel Fusion & 0.2510 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Drishti - IR Analysis & 0.1470 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & fused_add_mul_gelu & Drishti - Hardware Telemetry & 0.1343 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & sum_reduction & Standard Triton & 0.1079 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & sum_reduction & Triton + Autotune & 0.0820 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & sum_reduction & Full Drishti & 0.0725 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & sum_reduction & Full Drishti & 0.0725 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & sum_reduction & Drishti - Vectorization & 0.1079 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & sum_reduction & Drishti - Kernel Fusion & 0.1390 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & sum_reduction & Drishti - IR Analysis & 0.0814 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & sum_reduction & Drishti - Hardware Telemetry & 0.0743 & \textbf{1.45\times} & 23.5 & PASS \\
-RTX 3050 & layernorm & Standard Triton & 0.1620 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & layernorm & Triton + Autotune & 0.1231 & \textbf{1.32\times} & 21.3 & PASS \\
-RTX 3050 & layernorm & Full Drishti & 0.1089 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & layernorm & Full Drishti & 0.1089 & \textbf{1.49\times} & 24.1 & PASS \\
-RTX 3050 & layernorm & Drishti - Vectorization & 0.1620 & 1.00\times & 16.2 & PASS \\
-RTX 3050 & layernorm & Drishti - Kernel Fusion & 0.2087 & 0.78\times & 12.4 & PASS \\
-RTX 3050 & layernorm & Drishti - IR Analysis & 0.1221 & \textbf{1.33\times} & 21.5 & PASS \\
-RTX 3050 & layernorm & Drishti - Hardware Telemetry & 0.1116 & \textbf{1.45\times} & 23.5 & PASS \\
+RTX 3050 & gemm_small & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_small & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_medium & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & gemm_large & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_short & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_medium & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & attn_long & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_relu & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & fused_add_mul_gelu & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & sum_reduction & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Standard Triton & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Triton + Autotune & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Full Drishti & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Drishti - Vectorization & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Drishti - Kernel Fusion & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Drishti - IR Analysis & N/A & N/A & N/A & UNEXECUTED \\
+RTX 3050 & layernorm & Drishti - Hardware Telemetry & N/A & N/A & N/A & UNEXECUTED \\
 \hline
 \end{tabular}
 \end{table*}

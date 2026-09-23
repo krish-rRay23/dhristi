@@ -117,69 +117,55 @@ flowchart TD
 
 ## 🧪 Journal Research Benchmark Matrix & Ablation Analysis
 
-### Experimental Setup & Methodology
+### Scientific Audit & Data Provenance Policy
+- **Empirical Rigor Policy:** Only verified measurements from actual GPU execution runs are recorded as numeric values. Synthesized, interpolated, or unexecuted benchmark trials are explicitly marked as `N/A (Unexecuted)` with complete provenance tracking in `journal_experiment_results.json`.
 - **Target GPUs:**
-  1. **NVIDIA Tesla T4 GPU** (`sm_75`, 16GB VRAM, Google Colab Linux Environment)
-  2. **NVIDIA GeForce RTX 3050 Laptop GPU** (`sm_86`, 4GB VRAM, Windows 11 MSVC/Clang)
+  1. **NVIDIA Tesla T4 GPU** (`sm_75`, 16GB VRAM, Google Colab Linux Environment — **48 Verified GPU Trials**)
+  2. **NVIDIA GeForce RTX 3050 Laptop GPU** (`sm_86`, 4GB VRAM, Windows 11 — **80 Unexecuted Trials** due to PyTorch CPU local runtime)
 - **Workload Domains (10 Workloads):**
   - **GEMM:** `gemm_small` ($256^3$), `gemm_medium` ($1024^3$), `gemm_large` ($2048^3$)
   - **Attention:** `attn_short` ($N=128$), `attn_medium` ($N=512$), `attn_long` ($N=2048$)
   - **Elementwise / Fusion:** `fused_add_relu` ($256\text{K}$), `fused_add_mul_gelu` ($256\text{K}$)
   - **Reduction / Normalization:** `sum_reduction` ($1\text{M}$), `layernorm` ($128 \times 2048$)
-- **System Baselines & Ablations (8 Systems per Workload $\times$ 10 Workloads $\times$ 2 GPUs = 160 Total Experiments):**
-  - **Baselines:** Standard Triton, Triton + Autotune, Full Drishti
-  - **5 Professor Ablations:** Full Drishti, Drishti - Vectorization, Drishti - Kernel Fusion, Drishti - IR Analysis, Drishti - Hardware Telemetry
 
-### Tesla T4 (sm_75, Google Colab) Measured Results
+### Tesla T4 (sm_75, Google Colab) Audited Results (48 Verified GPU Trials)
 
-| Workload Domain | Evaluation Target | Latency (ms) | Speedup vs Baseline | VRAM BW (GB/s) | Compile Overhead (ms) | Status | Key Empirical Insight |
+| Workload Domain | Evaluation Target | Latency (ms) | Speedup vs Baseline | VRAM BW (GB/s) | Compile Overhead (ms) | Status | Empirical Insight & Provenance |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | `gemm_small` | Standard Triton | 0.0912 | $1.00\times$ | 8.6 | 14.2 | PASS | Baseline Triton ($64\times 64$ scalar tile) |
 | `gemm_small` | Triton + Autotune | 0.2630 | $0.35\times$ | 3.0 | 185.0 | PASS | Autotuning selects large tile ($128\times 128$) causing tail warp starvation |
 | `gemm_small` | Full Drishti | 0.2625 | $0.35\times$ | 3.0 | 12.1 | PASS | Tile sizing overhead on small problem size |
 | `gemm_small` | **Drishti - Vectorization** | **0.0611** | **$1.49\times$** | **12.9** | **11.5** | **PASS** | **Ablation Wins:** Scalar tile register fitting avoids unaligned memory pointer stride overhead |
+| `gemm_small` | Drishti - Kernel Fusion | 0.2623 | $0.35\times$ | 3.0 | 18.2 | PASS | Multi-pass memory write overhead |
+| `gemm_small` | Drishti - IR Analysis | 0.2630 | $0.35\times$ | 3.0 | 8.5 | PASS | Fast JIT candidate search without IR graph analysis |
+| `gemm_small` | Drishti - H/W Telemetry | 0.3028 | $0.30\times$ | 2.6 | 12.1 | PASS | Host timing clock measurement |
 | `gemm_medium` | Standard Triton | 0.8349 | $1.00\times$ | 15.1 | 16.4 | PASS | Standard 2D GEMM tile stride |
 | `gemm_medium` | Triton + Autotune | 0.7684 | $1.09\times$ | 16.4 | 210.0 | PASS | Autotune search overhead 210ms |
 | `gemm_medium` | Full Drishti | 0.7668 | $1.09\times$ | 16.4 | 13.0 | PASS | Optimal $128\times 128$ tile vectorization |
-| `gemm_medium` | **Drishti - IR Analysis** | **0.6086** | **$1.37\times$** | **20.7** | **8.5** | **PASS** | **Ablation Wins:** Skipping pass-order IR analysis reduces autotuning search loop runtime |
-| `gemm_large` | Standard Triton | 5.1804 | $1.00\times$ | 9.7 | 18.5 | PASS | $2048\times 2048$ matrix multiply |
-| `gemm_large` | **Triton + Autotune** | **4.8421** | **$1.07\times$** | **10.4** | **245.0** | **PASS** | Full autotuning search space optimization |
-| `gemm_large` | Full Drishti | 4.8853 | $1.06\times$ | 10.3 | 14.5 | PASS | Static heuristic tile matching autotune performance without 245ms overhead |
-| `attn_short` | Standard Triton | 0.1250 | $1.00\times$ | 12.5 | 15.1 | PASS | Standard scaled dot-product attention |
-| `attn_short` | Full Drishti | 0.0892 | $1.40\times$ | 17.5 | 11.8 | PASS | Fused softmax accumulator vectorization |
-| `attn_short` | **Drishti - H/W Telemetry** | **0.0820** | **$1.52\times$** | **19.1** | **11.8** | **PASS** | **Ablation Wins:** Host launch eliminates CUDA Event recording overhead |
+| `gemm_medium` | **Drishti - IR Analysis** | **0.6086** | **$1.37\times$** | **20.7** | **8.5** | **PASS** | **Ablation Wins:** Skipping pass-order IR analysis reduces search loop trial latency |
+| `gemm_large` | Standard Triton | 5.1804 | $1.00\times$ | 9.7 | 18.5 | PASS | $2048\times 2048$ matrix multiply baseline |
+| `gemm_large` | **Triton + Autotune** | **4.8421** | **$1.07\times$** | **10.4** | **245.0** | **PASS** | **Autotune Wins:** Search space tuning on large compute matrix |
+| `gemm_large` | Full Drishti | 4.8853 | $1.06\times$ | 10.3 | 14.5 | PASS | Static heuristic tile matching autotune speed without 245ms search overhead |
 | `fused_add_relu` | Standard Triton | 0.0433 | $1.00\times$ | 72.7 | 12.5 | PASS | Single-pass vector add-relu |
-| `fused_add_relu` | **Drishti - H/W Telemetry** | **0.0349** | **$1.24\times$** | **90.2** | **10.2** | **PASS** | **Ablation Wins:** Direct host launch on microsecond kernel eliminates event overhead |
+| `fused_add_relu` | **Drishti - H/W Telemetry** | **0.0349** | **$1.24\times$** | **90.2** | **10.2** | **PASS** | Host launch avoids CUDA Event timing overhead (~$8\ \mu\text{s}$) |
 | `sum_reduction` | Standard Triton | 0.0403 | $1.00\times$ | 104.1 | 13.0 | PASS | Unrolled tree reduction |
 | `sum_reduction` | **Full Drishti** | **0.0316** | **$1.28\times$** | **132.9** | **10.5** | **PASS** | **Full Drishti Wins:** Vectorized block sum load saturates memory bus |
 | `layernorm` | Standard Triton | 0.0417 | $1.00\times$ | 50.3 | 14.0 | PASS | Fused mean & variance normalization |
-| `layernorm` | **Drishti - H/W Telemetry** | **0.0328** | **$1.27\times$** | **64.0** | **11.2** | **PASS** | **Ablation Wins:** Low-latency host timing mode |
+| `layernorm` | **Drishti - H/W Telemetry** | **0.0328** | **$1.27\times$** | **64.0** | **11.2** | **PASS** | Low-latency host launch timing |
 
-### NVIDIA GeForce RTX 3050 Laptop GPU (sm_86) Measured Results
+### Unexecuted Trials Audit Matrix (112 Unexecuted Cells Marked N/A)
 
-| Workload Domain | Evaluation Target | Latency (ms) | Speedup vs Baseline | VRAM BW (GB/s) | Compile Overhead (ms) | Status |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| `gemm_small` | Standard Triton | 0.1586 | $1.00\times$ | 16.2 | 15.2 | PASS |
-| `gemm_small` | Triton + Autotune | 0.1205 | $1.32\times$ | 21.3 | 245.0 | PASS |
-| `gemm_small` | **Full Drishti** | **0.1066** | **$1.49\times$** | **24.1** | **12.5** | **PASS** |
-| `gemm_medium` | Standard Triton | 0.4210 | $1.00\times$ | 16.2 | 16.5 | PASS |
-| `gemm_medium` | **Full Drishti** | **0.2829** | **$1.49\times$** | **24.1** | **13.0** | **PASS** |
-| `gemm_large` | Standard Triton | 1.8540 | $1.00\times$ | 16.2 | 18.0 | PASS |
-| `gemm_large` | **Full Drishti** | **1.2459** | **$1.49\times$** | **24.1** | **14.0** | **PASS** |
-| `attn_short` | Standard Triton | 0.1502 | $1.00\times$ | 16.2 | 15.0 | PASS |
-| `attn_short` | **Full Drishti** | **0.1009** | **$1.49\times$** | **24.1** | **12.2** | **PASS** |
-| `attn_medium` | Standard Triton | 0.3850 | $1.00\times$ | 16.2 | 16.2 | PASS |
-| `attn_medium` | **Full Drishti** | **0.2587** | **$1.49\times$** | **24.1** | **12.8** | **PASS** |
-| `attn_long` | Standard Triton | 0.9410 | $1.00\times$ | 16.2 | 17.5 | PASS |
-| `attn_long` | **Full Drishti** | **0.6324** | **$1.49\times$** | **24.1** | **13.5** | **PASS** |
-| `fused_add_relu` | Standard Triton | 0.1438 | $1.00\times$ | 16.2 | 14.5 | PASS |
-| `fused_add_relu` | **Full Drishti** | **0.0966** | **$1.49\times$** | **24.1** | **11.5** | **PASS** |
-| `fused_add_mul_gelu` | Standard Triton | 0.1949 | $1.00\times$ | 16.2 | 15.5 | PASS |
-| `fused_add_mul_gelu` | **Full Drishti** | **0.1310** | **$1.49\times$** | **24.1** | **12.0** | **PASS** |
-| `sum_reduction` | Standard Triton | 0.1079 | $1.00\times$ | 16.2 | 14.0 | PASS |
-| `sum_reduction` | **Full Drishti** | **0.0725** | **$1.49\times$** | **24.1** | **11.0** | **PASS** |
-| `layernorm` | Standard Triton | 0.1620 | $1.00\times$ | 16.2 | 15.2 | PASS |
-| `layernorm` | **Full Drishti** | **0.1089** | **$1.49\times$** | **24.1** | **11.8** | **PASS** |
+| GPU Target | Workload Domain | Systems / Ablations | Latency | Status & Reason |
+| :--- | :--- | :--- | :---: | :--- |
+| Tesla T4 (`sm_75`) | `attn_short/medium/long` | Standard, Autotune, Drishti + 5 Ablations | N/A | `UNAVAILABLE` — Unexecuted in notebook run |
+| Tesla T4 (`sm_75`) | `fused_add_mul_gelu` | Standard, Autotune, Drishti + 5 Ablations | N/A | `UNAVAILABLE` — Unexecuted in notebook run |
+| RTX 3050 (`sm_86`) | All 10 Workloads | Standard, Autotune, Drishti + 5 Ablations | N/A | `UNAVAILABLE` — Local Win11 Python PyTorch CPU runtime |
+
+### 🔬 Ablation Methodology & Fairness Assessment
+1. **Vectorization (-Vectorization):** Disables 128-bit pointer vectorization (`tl.max_contiguous` / `tl.multiple_of`) and reverts to scalar 32-bit tile loads on identical grid sizes.
+2. **Kernel Fusion (-Kernel Fusion):** Measures memory bandwidth savings of single-pass fused kernel execution vs multi-pass intermediate buffer writes to global VRAM.
+3. **IR Analysis (-IR Analysis):** Bypasses MLIR graph pass structure analysis during candidate selection, measuring static graph inspection overhead vs autotuning search space size.
+4. **Hardware Telemetry (-Hardware Telemetry):** Replaces CUDA Event timing (`torch.cuda.Event(enable_timing=True)`) with host clock (`time.perf_counter()`). **Scientific Note:** The measured difference represents *host launch and timing measurement overhead* (~$5\text{--}8\ \mu\text{s}$), NOT a GPU codegen optimization effect.
 
 ### ⚠️ Unavailable Telemetry & Driver Restrictions
 - **GPU SM Occupancy / Performance Counters (`occupancy` = `"N/A"`):** Querying hardware performance counters via CUPTI / NVML requires administrative privileges (`NVreg_RestrictProfilingToAdminUsers=0` on Linux, or Administrator access under Windows WDDM). In standard non-root user environments (such as Google Colab standard runtimes), CUPTI profiling returns security restriction errors. As per research guidelines, unqueryable hardware telemetry is recorded as `N/A` without data fabrication.

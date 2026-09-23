@@ -1,10 +1,19 @@
 {
-  "timestamp": "2026-09-23 17:30:00",
+  "timestamp": "2026-09-23 17:35:00",
+  "audit_policy": "Strict Scientific Verification (No Synthesized/Interpolated Data)",
   "target_gpus": [
     "NVIDIA Tesla T4 (sm_75, Google Colab)",
     "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)"
   ],
   "total_experiments": 160,
+  "audit_summary": {
+    "verified_gpu_trials": 48,
+    "unexecuted_trials": 112,
+    "total_matrix_cells": 160,
+    "t4_verified_count": 48,
+    "t4_unexecuted_count": 32,
+    "rtx3050_unexecuted_count": 80
+  },
   "results": [
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -13,13 +22,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 0.0912,
-      "stddev_ms": 0.0014,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 8.62,
       "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -28,13 +45,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 0.263,
-      "stddev_ms": 0.0039,
       "speedup_vs_baseline": 0.35,
       "vram_bandwidth_gbps": 2.99,
       "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -43,13 +68,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 0.2625,
-      "stddev_ms": 0.0039,
       "speedup_vs_baseline": 0.35,
       "vram_bandwidth_gbps": 3.0,
       "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -58,13 +91,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 0.2628,
-      "stddev_ms": 0.0039,
       "speedup_vs_baseline": 0.35,
-      "vram_bandwidth_gbps": 3.0,
+      "vram_bandwidth_gbps": 2.99,
       "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -73,13 +114,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 0.0611,
-      "stddev_ms": 0.0009,
       "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 12.9,
+      "vram_bandwidth_gbps": 12.87,
       "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -88,13 +137,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 0.2623,
-      "stddev_ms": 0.0039,
       "speedup_vs_baseline": 0.35,
       "vram_bandwidth_gbps": 3.0,
       "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -103,13 +160,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 0.263,
-      "stddev_ms": 0.0039,
       "speedup_vs_baseline": 0.35,
       "vram_bandwidth_gbps": 2.99,
       "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -118,13 +183,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 0.3028,
-      "stddev_ms": 0.0045,
       "speedup_vs_baseline": 0.3,
       "vram_bandwidth_gbps": 2.6,
       "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -133,13 +206,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 0.8349,
-      "stddev_ms": 0.0125,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 15.07,
-      "compilation_overhead_ms": 16.4,
+      "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -148,13 +229,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 0.7684,
-      "stddev_ms": 0.0115,
       "speedup_vs_baseline": 1.09,
       "vram_bandwidth_gbps": 16.37,
-      "compilation_overhead_ms": 210.0,
+      "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -163,13 +252,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 0.7668,
-      "stddev_ms": 0.0115,
       "speedup_vs_baseline": 1.09,
       "vram_bandwidth_gbps": 16.41,
-      "compilation_overhead_ms": 13.0,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -178,13 +275,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 0.765,
-      "stddev_ms": 0.0115,
       "speedup_vs_baseline": 1.09,
-      "vram_bandwidth_gbps": 16.41,
-      "compilation_overhead_ms": 13.0,
+      "vram_bandwidth_gbps": 16.45,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -193,13 +298,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 0.6191,
-      "stddev_ms": 0.0093,
       "speedup_vs_baseline": 1.35,
       "vram_bandwidth_gbps": 20.32,
-      "compilation_overhead_ms": 12.0,
+      "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -208,13 +321,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 0.6987,
-      "stddev_ms": 0.0105,
       "speedup_vs_baseline": 1.19,
-      "vram_bandwidth_gbps": 18.0,
+      "vram_bandwidth_gbps": 18.01,
       "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -223,13 +344,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 0.6086,
-      "stddev_ms": 0.0091,
       "speedup_vs_baseline": 1.37,
-      "vram_bandwidth_gbps": 20.66,
+      "vram_bandwidth_gbps": 20.68,
       "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -238,13 +367,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 0.6255,
-      "stddev_ms": 0.0094,
       "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 20.1,
-      "compilation_overhead_ms": 13.0,
+      "vram_bandwidth_gbps": 20.12,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -253,13 +390,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 5.1804,
-      "stddev_ms": 0.0777,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 9.72,
-      "compilation_overhead_ms": 18.5,
+      "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -268,13 +413,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 4.8421,
-      "stddev_ms": 0.0726,
       "speedup_vs_baseline": 1.07,
       "vram_bandwidth_gbps": 10.39,
-      "compilation_overhead_ms": 245.0,
+      "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -283,13 +436,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 4.8853,
-      "stddev_ms": 0.0733,
       "speedup_vs_baseline": 1.06,
       "vram_bandwidth_gbps": 10.3,
-      "compilation_overhead_ms": 14.5,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -298,13 +459,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 4.8972,
-      "stddev_ms": 0.0735,
       "speedup_vs_baseline": 1.06,
-      "vram_bandwidth_gbps": 10.3,
-      "compilation_overhead_ms": 14.5,
+      "vram_bandwidth_gbps": 10.28,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -313,13 +482,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 5.119,
-      "stddev_ms": 0.0768,
       "speedup_vs_baseline": 1.01,
-      "vram_bandwidth_gbps": 9.84,
-      "compilation_overhead_ms": 13.5,
+      "vram_bandwidth_gbps": 9.83,
+      "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -328,13 +505,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 4.9085,
-      "stddev_ms": 0.0736,
       "speedup_vs_baseline": 1.06,
       "vram_bandwidth_gbps": 10.25,
-      "compilation_overhead_ms": 20.1,
+      "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -343,13 +528,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 4.9123,
-      "stddev_ms": 0.0737,
       "speedup_vs_baseline": 1.05,
-      "vram_bandwidth_gbps": 10.24,
-      "compilation_overhead_ms": 9.2,
+      "vram_bandwidth_gbps": 10.25,
+      "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -358,13 +551,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 4.9408,
-      "stddev_ms": 0.0741,
       "speedup_vs_baseline": 1.05,
-      "vram_bandwidth_gbps": 10.18,
-      "compilation_overhead_ms": 14.5,
+      "vram_bandwidth_gbps": 10.19,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -372,14 +573,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.125,
-      "stddev_ms": 0.0019,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 12.5,
-      "compilation_overhead_ms": 15.1,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -387,14 +594,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.0984,
-      "stddev_ms": 0.0015,
-      "speedup_vs_baseline": 1.27,
-      "vram_bandwidth_gbps": 15.87,
-      "compilation_overhead_ms": 190.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -402,14 +615,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.0892,
-      "stddev_ms": 0.0013,
-      "speedup_vs_baseline": 1.4,
-      "vram_bandwidth_gbps": 17.51,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -417,14 +636,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.0895,
-      "stddev_ms": 0.0013,
-      "speedup_vs_baseline": 1.4,
-      "vram_bandwidth_gbps": 17.51,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -432,14 +657,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1245,
-      "stddev_ms": 0.0019,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 12.55,
-      "compilation_overhead_ms": 11.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -447,14 +678,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.1412,
-      "stddev_ms": 0.0021,
-      "speedup_vs_baseline": 0.89,
-      "vram_bandwidth_gbps": 11.06,
-      "compilation_overhead_ms": 17.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -462,14 +699,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.095,
-      "stddev_ms": 0.0014,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 16.44,
-      "compilation_overhead_ms": 8.1,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -477,14 +720,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.082,
-      "stddev_ms": 0.0012,
-      "speedup_vs_baseline": 1.52,
-      "vram_bandwidth_gbps": 19.05,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -492,14 +741,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.342,
-      "stddev_ms": 0.0051,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 14.12,
-      "compilation_overhead_ms": 16.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -507,14 +762,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.265,
-      "stddev_ms": 0.004,
-      "speedup_vs_baseline": 1.29,
-      "vram_bandwidth_gbps": 18.23,
-      "compilation_overhead_ms": 215.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -522,14 +783,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.245,
-      "stddev_ms": 0.0037,
-      "speedup_vs_baseline": 1.4,
-      "vram_bandwidth_gbps": 19.71,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -537,14 +804,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.2448,
-      "stddev_ms": 0.0037,
-      "speedup_vs_baseline": 1.4,
-      "vram_bandwidth_gbps": 19.71,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -552,14 +825,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.3415,
-      "stddev_ms": 0.0051,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 14.14,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -567,14 +846,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.385,
-      "stddev_ms": 0.0058,
-      "speedup_vs_baseline": 0.89,
-      "vram_bandwidth_gbps": 12.55,
-      "compilation_overhead_ms": 18.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -582,14 +867,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.258,
-      "stddev_ms": 0.0039,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 18.72,
-      "compilation_overhead_ms": 8.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -597,14 +888,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.231,
-      "stddev_ms": 0.0035,
-      "speedup_vs_baseline": 1.48,
-      "vram_bandwidth_gbps": 20.91,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -612,14 +909,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.892,
-      "stddev_ms": 0.0134,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 15.8,
-      "compilation_overhead_ms": 17.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -627,14 +930,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.685,
-      "stddev_ms": 0.0103,
-      "speedup_vs_baseline": 1.3,
-      "vram_bandwidth_gbps": 20.58,
-      "compilation_overhead_ms": 230.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -642,14 +951,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.621,
-      "stddev_ms": 0.0093,
-      "speedup_vs_baseline": 1.44,
-      "vram_bandwidth_gbps": 22.7,
-      "compilation_overhead_ms": 13.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -657,14 +972,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.6205,
-      "stddev_ms": 0.0093,
-      "speedup_vs_baseline": 1.44,
-      "vram_bandwidth_gbps": 22.7,
-      "compilation_overhead_ms": 13.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -672,14 +993,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.891,
-      "stddev_ms": 0.0134,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 15.82,
-      "compilation_overhead_ms": 12.4,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -687,14 +1014,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 1.012,
-      "stddev_ms": 0.0152,
-      "speedup_vs_baseline": 0.88,
-      "vram_bandwidth_gbps": 13.93,
-      "compilation_overhead_ms": 19.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -702,14 +1035,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.665,
-      "stddev_ms": 0.01,
-      "speedup_vs_baseline": 1.34,
-      "vram_bandwidth_gbps": 21.2,
-      "compilation_overhead_ms": 9.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -717,14 +1056,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.598,
-      "stddev_ms": 0.009,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 23.58,
-      "compilation_overhead_ms": 13.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -733,13 +1078,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 0.0433,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 72.71,
-      "compilation_overhead_ms": 12.5,
+      "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -748,13 +1101,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 0.0692,
-      "stddev_ms": 0.001,
       "speedup_vs_baseline": 0.63,
       "vram_bandwidth_gbps": 45.46,
-      "compilation_overhead_ms": 160.0,
+      "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -763,13 +1124,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 0.0679,
-      "stddev_ms": 0.001,
       "speedup_vs_baseline": 0.64,
       "vram_bandwidth_gbps": 46.3,
-      "compilation_overhead_ms": 10.2,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -778,13 +1147,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 0.0844,
-      "stddev_ms": 0.0013,
       "speedup_vs_baseline": 0.51,
-      "vram_bandwidth_gbps": 37.26,
-      "compilation_overhead_ms": 10.2,
+      "vram_bandwidth_gbps": 37.27,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -793,13 +1170,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 0.0434,
-      "stddev_ms": 0.0007,
       "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 72.54,
-      "compilation_overhead_ms": 9.8,
+      "vram_bandwidth_gbps": 72.48,
+      "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -808,13 +1193,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 0.065,
-      "stddev_ms": 0.001,
       "speedup_vs_baseline": 0.67,
-      "vram_bandwidth_gbps": 48.43,
-      "compilation_overhead_ms": 15.0,
+      "vram_bandwidth_gbps": 48.4,
+      "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -823,13 +1216,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 0.0405,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.07,
-      "vram_bandwidth_gbps": 77.74,
-      "compilation_overhead_ms": 7.2,
+      "vram_bandwidth_gbps": 77.67,
+      "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -838,13 +1239,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 0.0349,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.24,
-      "vram_bandwidth_gbps": 90.2,
-      "compilation_overhead_ms": 10.2,
+      "vram_bandwidth_gbps": 90.14,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -852,14 +1261,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.0612,
-      "stddev_ms": 0.0009,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 51.44,
-      "compilation_overhead_ms": 13.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -867,14 +1282,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.0754,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 0.81,
-      "vram_bandwidth_gbps": 41.75,
-      "compilation_overhead_ms": 175.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -882,14 +1303,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.0721,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 0.85,
-      "vram_bandwidth_gbps": 43.66,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -897,14 +1324,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.0718,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 0.85,
-      "vram_bandwidth_gbps": 43.66,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -912,14 +1345,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.0615,
-      "stddev_ms": 0.0009,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 51.19,
-      "compilation_overhead_ms": 10.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -927,14 +1366,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.089,
-      "stddev_ms": 0.0013,
-      "speedup_vs_baseline": 0.69,
-      "vram_bandwidth_gbps": 35.37,
-      "compilation_overhead_ms": 16.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -942,14 +1387,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.0542,
-      "stddev_ms": 0.0008,
-      "speedup_vs_baseline": 1.13,
-      "vram_bandwidth_gbps": 58.08,
-      "compilation_overhead_ms": 7.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -957,14 +1408,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.0485,
-      "stddev_ms": 0.0007,
-      "speedup_vs_baseline": 1.26,
-      "vram_bandwidth_gbps": 64.91,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "Trial not present in notebook execution run",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -973,13 +1430,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 0.0403,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 104.12,
-      "compilation_overhead_ms": 13.0,
+      "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -988,13 +1453,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 0.0347,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.16,
       "vram_bandwidth_gbps": 120.87,
-      "compilation_overhead_ms": 165.0,
+      "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1003,13 +1476,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 0.0352,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.14,
       "vram_bandwidth_gbps": 119.24,
-      "compilation_overhead_ms": 10.5,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1018,13 +1499,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 0.0316,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.28,
-      "vram_bandwidth_gbps": 132.85,
-      "compilation_overhead_ms": 10.5,
+      "vram_bandwidth_gbps": 132.86,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1033,13 +1522,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 0.0344,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.17,
-      "vram_bandwidth_gbps": 122.0,
-      "compilation_overhead_ms": 10.0,
+      "vram_bandwidth_gbps": 122.05,
+      "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1048,13 +1545,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 0.0337,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.2,
-      "vram_bandwidth_gbps": 124.5,
-      "compilation_overhead_ms": 15.2,
+      "vram_bandwidth_gbps": 124.58,
+      "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1063,13 +1568,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 0.0347,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.16,
-      "vram_bandwidth_gbps": 120.87,
-      "compilation_overhead_ms": 7.5,
+      "vram_bandwidth_gbps": 120.99,
+      "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1078,13 +1591,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 0.0272,
-      "stddev_ms": 0.0004,
       "speedup_vs_baseline": 1.48,
-      "vram_bandwidth_gbps": 154.34,
-      "compilation_overhead_ms": 10.5,
+      "vram_bandwidth_gbps": 154.35,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1093,13 +1614,21 @@
       "system_id": "Standard Triton",
       "ablation_id": "none",
       "latency_ms": 0.0417,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.0,
       "vram_bandwidth_gbps": 50.33,
-      "compilation_overhead_ms": 14.0,
+      "compilation_overhead_ms": 14.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1108,13 +1637,21 @@
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
       "latency_ms": 0.0381,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.09,
       "vram_bandwidth_gbps": 55.03,
-      "compilation_overhead_ms": 170.0,
+      "compilation_overhead_ms": 185.0,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1123,13 +1660,21 @@
       "system_id": "Full Drishti",
       "ablation_id": "none",
       "latency_ms": 0.0382,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.09,
       "vram_bandwidth_gbps": 54.87,
-      "compilation_overhead_ms": 11.2,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1138,13 +1683,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
       "latency_ms": 0.0423,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 0.99,
-      "vram_bandwidth_gbps": 49.6,
-      "compilation_overhead_ms": 11.2,
+      "vram_bandwidth_gbps": 49.58,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1153,13 +1706,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
       "latency_ms": 0.0368,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.13,
-      "vram_bandwidth_gbps": 57.0,
-      "compilation_overhead_ms": 10.6,
+      "vram_bandwidth_gbps": 56.99,
+      "compilation_overhead_ms": 11.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1168,13 +1729,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
       "latency_ms": 0.0364,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.15,
-      "vram_bandwidth_gbps": 57.6,
-      "compilation_overhead_ms": 15.8,
+      "vram_bandwidth_gbps": 57.61,
+      "compilation_overhead_ms": 18.2,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1183,13 +1752,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
       "latency_ms": 0.0403,
-      "stddev_ms": 0.0006,
       "speedup_vs_baseline": 1.03,
-      "vram_bandwidth_gbps": 52.0,
-      "compilation_overhead_ms": 8.0,
+      "vram_bandwidth_gbps": 52.04,
+      "compilation_overhead_ms": 8.5,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "CUDA Driver Events (torch.cuda.Event)"
+      }
     },
     {
       "hardware_device": "NVIDIA Tesla T4 (sm_75, Google Colab)",
@@ -1198,13 +1775,21 @@
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
       "latency_ms": 0.0328,
-      "stddev_ms": 0.0005,
       "speedup_vs_baseline": 1.27,
-      "vram_bandwidth_gbps": 63.96,
-      "compilation_overhead_ms": 11.2,
+      "vram_bandwidth_gbps": 63.94,
+      "compilation_overhead_ms": 12.1,
       "correctness": true,
       "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "VERIFIED_GPU_MEASUREMENT",
+        "source_file": "notebooks/Runned_Drishti_Journal_Benchmark_Suite.ipynb",
+        "source_cell": 3,
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32",
+        "timer_method": "Host Clock (time.perf_counter)"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1212,14 +1797,20 @@
       "workload_domain": "GEMM",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.1586,
-      "stddev_ms": 0.0024,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 15.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1227,14 +1818,20 @@
       "workload_domain": "GEMM",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.1205,
-      "stddev_ms": 0.0018,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 245.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1242,14 +1839,20 @@
       "workload_domain": "GEMM",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.1066,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.09,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1257,14 +1860,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.1066,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.09,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1272,14 +1881,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1586,
-      "stddev_ms": 0.0024,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 12.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1287,14 +1902,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.2042,
-      "stddev_ms": 0.0031,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 18.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1302,14 +1923,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.1196,
-      "stddev_ms": 0.0018,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1317,14 +1944,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.1093,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1332,14 +1965,20 @@
       "workload_domain": "GEMM",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.421,
-      "stddev_ms": 0.0063,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 16.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1347,14 +1986,20 @@
       "workload_domain": "GEMM",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.32,
-      "stddev_ms": 0.0048,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 250.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1362,14 +2007,20 @@
       "workload_domain": "GEMM",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.2829,
-      "stddev_ms": 0.0042,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 13.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1377,14 +2028,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.2829,
-      "stddev_ms": 0.0042,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 13.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1392,14 +2049,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.421,
-      "stddev_ms": 0.0063,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 12.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1407,14 +2070,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.5422,
-      "stddev_ms": 0.0081,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 18.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1422,14 +2091,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.3174,
-      "stddev_ms": 0.0048,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1437,14 +2112,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.2901,
-      "stddev_ms": 0.0044,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 13.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1452,14 +2133,20 @@
       "workload_domain": "GEMM",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 1.854,
-      "stddev_ms": 0.0278,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 18.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1467,14 +2154,20 @@
       "workload_domain": "GEMM",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 1.409,
-      "stddev_ms": 0.0211,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 260.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1482,14 +2175,20 @@
       "workload_domain": "GEMM",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 1.2459,
-      "stddev_ms": 0.0187,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 14.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1497,14 +2196,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 1.2459,
-      "stddev_ms": 0.0187,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 14.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1512,14 +2217,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 1.854,
-      "stddev_ms": 0.0278,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 13.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1527,14 +2238,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 2.388,
-      "stddev_ms": 0.0358,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 19.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1542,14 +2259,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 1.3979,
-      "stddev_ms": 0.021,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 9.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1557,14 +2280,20 @@
       "workload_domain": "GEMM",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 1.2774,
-      "stddev_ms": 0.0192,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 14.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1572,14 +2301,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.1502,
-      "stddev_ms": 0.0023,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 15.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1587,14 +2322,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.1142,
-      "stddev_ms": 0.0017,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 240.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1602,14 +2343,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.1009,
-      "stddev_ms": 0.0015,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1617,14 +2364,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.1009,
-      "stddev_ms": 0.0015,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1632,14 +2385,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1502,
-      "stddev_ms": 0.0023,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1647,14 +2406,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.1935,
-      "stddev_ms": 0.0029,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 17.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1662,14 +2427,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.1133,
-      "stddev_ms": 0.0017,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1677,14 +2448,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.1035,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 12.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1692,14 +2469,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.385,
-      "stddev_ms": 0.0058,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 16.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1707,14 +2490,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.2926,
-      "stddev_ms": 0.0044,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 248.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1722,14 +2511,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.2587,
-      "stddev_ms": 0.0039,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1737,14 +2532,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.2587,
-      "stddev_ms": 0.0039,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1752,14 +2553,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.385,
-      "stddev_ms": 0.0058,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 12.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1767,14 +2574,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.4959,
-      "stddev_ms": 0.0074,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 18.4,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1782,14 +2595,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.2903,
-      "stddev_ms": 0.0044,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.6,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1797,14 +2616,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.2653,
-      "stddev_ms": 0.004,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 12.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1812,14 +2637,20 @@
       "workload_domain": "Attention",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.941,
-      "stddev_ms": 0.0141,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 17.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1827,14 +2658,20 @@
       "workload_domain": "Attention",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.7152,
-      "stddev_ms": 0.0107,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 255.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1842,14 +2679,20 @@
       "workload_domain": "Attention",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.6324,
-      "stddev_ms": 0.0095,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 13.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1857,14 +2700,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.6324,
-      "stddev_ms": 0.0095,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 13.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1872,14 +2721,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.941,
-      "stddev_ms": 0.0141,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 12.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1887,14 +2742,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 1.212,
-      "stddev_ms": 0.0182,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 19.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1902,14 +2763,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.7095,
-      "stddev_ms": 0.0106,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 9.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1917,14 +2784,20 @@
       "workload_domain": "Attention",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.6483,
-      "stddev_ms": 0.0097,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 13.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1932,14 +2805,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.1438,
-      "stddev_ms": 0.0022,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 14.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1947,14 +2826,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.1093,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 235.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1962,14 +2847,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.0966,
-      "stddev_ms": 0.0014,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1977,14 +2868,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.0966,
-      "stddev_ms": 0.0014,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -1992,14 +2889,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1438,
-      "stddev_ms": 0.0022,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2007,14 +2910,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.1852,
-      "stddev_ms": 0.0028,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 17.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2022,14 +2931,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.1084,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 7.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2037,14 +2952,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.0991,
-      "stddev_ms": 0.0015,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 11.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2052,14 +2973,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.1949,
-      "stddev_ms": 0.0029,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 15.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2067,14 +2994,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.1481,
-      "stddev_ms": 0.0022,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 242.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2082,14 +3015,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.131,
-      "stddev_ms": 0.002,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2097,14 +3036,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.131,
-      "stddev_ms": 0.002,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 12.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2112,14 +3057,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1949,
-      "stddev_ms": 0.0029,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 11.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2127,14 +3078,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.251,
-      "stddev_ms": 0.0038,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 17.6,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2142,14 +3099,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.147,
-      "stddev_ms": 0.0022,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2157,14 +3120,20 @@
       "workload_domain": "Elementwise/Fusion",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.1343,
-      "stddev_ms": 0.002,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 12.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2172,14 +3141,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.1079,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 14.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2187,14 +3162,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.082,
-      "stddev_ms": 0.0012,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 230.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2202,14 +3183,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.0725,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2217,14 +3204,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.0725,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2232,14 +3225,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.1079,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 10.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2247,14 +3246,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.139,
-      "stddev_ms": 0.0021,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 16.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2262,14 +3267,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.0814,
-      "stddev_ms": 0.0012,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 7.5,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2277,14 +3288,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.0743,
-      "stddev_ms": 0.0011,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 11.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2292,14 +3309,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Standard Triton",
       "ablation_id": "none",
-      "latency_ms": 0.162,
-      "stddev_ms": 0.0024,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 15.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2307,14 +3330,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Triton + Autotune",
       "ablation_id": "none",
-      "latency_ms": 0.1231,
-      "stddev_ms": 0.0018,
-      "speedup_vs_baseline": 1.32,
-      "vram_bandwidth_gbps": 21.31,
-      "compilation_overhead_ms": 238.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2322,14 +3351,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Full Drishti",
       "ablation_id": "none",
-      "latency_ms": 0.1089,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2337,14 +3372,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Full Drishti",
-      "latency_ms": 0.1089,
-      "stddev_ms": 0.0016,
-      "speedup_vs_baseline": 1.49,
-      "vram_bandwidth_gbps": 24.11,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2352,14 +3393,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Vectorization",
-      "latency_ms": 0.162,
-      "stddev_ms": 0.0024,
-      "speedup_vs_baseline": 1.0,
-      "vram_bandwidth_gbps": 16.2,
-      "compilation_overhead_ms": 11.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2367,14 +3414,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Kernel Fusion",
-      "latency_ms": 0.2087,
-      "stddev_ms": 0.0031,
-      "speedup_vs_baseline": 0.78,
-      "vram_bandwidth_gbps": 12.4,
-      "compilation_overhead_ms": 17.2,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2382,14 +3435,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - IR Analysis",
-      "latency_ms": 0.1221,
-      "stddev_ms": 0.0018,
-      "speedup_vs_baseline": 1.33,
-      "vram_bandwidth_gbps": 21.47,
-      "compilation_overhead_ms": 8.0,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     },
     {
       "hardware_device": "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)",
@@ -2397,14 +3456,20 @@
       "workload_domain": "Reduction/Normalization",
       "system_id": "Drishti (Ablation)",
       "ablation_id": "Drishti - Hardware Telemetry",
-      "latency_ms": 0.1116,
-      "stddev_ms": 0.0017,
-      "speedup_vs_baseline": 1.45,
-      "vram_bandwidth_gbps": 23.5,
-      "compilation_overhead_ms": 11.8,
-      "correctness": true,
-      "max_abs_error": 0.0001,
-      "occupancy": "N/A"
+      "latency_ms": "N/A",
+      "speedup_vs_baseline": "N/A",
+      "vram_bandwidth_gbps": "N/A",
+      "compilation_overhead_ms": "N/A",
+      "correctness": "N/A",
+      "max_abs_error": "N/A",
+      "occupancy": "N/A",
+      "provenance": {
+        "status": "UNAVAILABLE_UNEXECUTED",
+        "reason": "PyTorch CUDA runtime unavailable on local Win11 Python environment",
+        "warmup_runs": 10,
+        "measured_repeats": 50,
+        "dtype": "float32"
+      }
     }
   ]
 }
