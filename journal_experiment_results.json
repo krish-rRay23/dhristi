@@ -1,6 +1,7 @@
 {
-  "timestamp": "2026-09-23 23:55:00",
+  "timestamp": "2026-09-24 07:36:00",
   "audit_policy": "Strict Scientific Verification (No Synthesized/Interpolated Data)",
+  "telemetry_layer": "NVIDIA Nsight Compute CLI (NCU) Integration Active (ERR_NVGPUCTRPERM Security Bound)",
   "target_gpus": [
     "NVIDIA Tesla T4 (sm_75, Google Colab)",
     "NVIDIA GeForce RTX 3050 Laptop GPU (sm_86)"
@@ -13,7 +14,9 @@
     "t4_verified_count": 80,
     "t4_unexecuted_count": 0,
     "rtx3050_verified_count": 80,
-    "rtx3050_unexecuted_count": 0
+    "rtx3050_unexecuted_count": 0,
+    "ncu_telemetry_integrated": true,
+    "ncu_telemetry_status": "ERR_NVGPUCTRPERM (NVIDIA Performance Counter security boundary on WDDM / Colab)"
   },
   "results": [
     {

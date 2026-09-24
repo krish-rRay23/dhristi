@@ -167,8 +167,9 @@ flowchart TD
 3. **IR Analysis (-IR Analysis):** Bypasses MLIR graph pass structure analysis during candidate selection, measuring static graph inspection overhead vs autotuning search space size.
 4. **Hardware Telemetry (-Hardware Telemetry):** Replaces CUDA Event timing (`torch.cuda.Event(enable_timing=True)`) with host clock (`time.perf_counter()`). **Scientific Note:** The measured difference represents *host launch and timing measurement overhead* (~$5\text{--}8\ \mu\text{s}$), NOT a GPU codegen optimization effect.
 
-### ⚠️ Unavailable Telemetry & Driver Restrictions
-- **GPU SM Occupancy / Performance Counters (`occupancy` = `"N/A"`):** Querying hardware performance counters via CUPTI / NVML requires administrative privileges (`NVreg_RestrictProfilingToAdminUsers=0` on Linux, or Administrator access under Windows WDDM). In standard non-root user environments (such as Google Colab standard runtimes), CUPTI profiling returns security restriction errors. As per research guidelines, unqueryable hardware telemetry is recorded as `N/A` without data fabrication.
+### ⚠️ Optional Telemetry Integration & NVIDIA Nsight Compute CLI (NCU) Boundaries
+- **NCU CLI Telemetry Collector (`scratch/ncu_telemetry_collector.py`):** Integrates automated profiling via NVIDIA Nsight Compute CLI (`ncu` / `ncu.bat`) to query `sm__warps_active.avg.pct_of_peak_sustained_active` (warp occupancy) and `sm__throughput.avg.pct_of_peak_sustained_elapsed` (throughput utilization).
+- **GPU SM Occupancy / Performance Counters (`occupancy` = `"N/A"`):** Querying hardware performance counters via NCU / CUPTI requires elevated administrative privileges (`NVreg_RestrictProfilingToAdminUsers=0` on Linux, or Administrator privileges under Windows WDDM `ERR_NVGPUCTRPERM`). In standard non-root user environments (such as Google Colab or non-elevated Windows user sessions), performance counter profiling is blocked by driver security policies. As per scientific integrity guidelines, unqueryable hardware counters are recorded as `N/A` with clear provenance tracking without modifying baseline kernel benchmark data.
 
 ---
 
