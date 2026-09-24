@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="stepGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    
+    <linearGradient id="stepGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="stepGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <linearGradient id="stepGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="220" rx="14" fill="url(#flowBg)" stroke="#1e293b" stroke-width="1.5" />
+
+  <text x="550" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#f8fafc" text-anchor="middle" letter-spacing="0.5">DṚṢṬI MULTI-STAGE COMPILER &amp; PERFORMANCE INTELLIGENCE PIPELINE</text>
+
+  <!-- Step 1: Frontend & Triton JIT -->
+  <g transform="translate(30, 65)">
+    <rect width="180" height="110" rx="10" fill="#1e293b" stroke="url(#stepGrad1)" stroke-width="2" />
+    <rect x="15" y="15" width="30" height="20" rx="4" fill="#0284c7" />
+    <text x="30" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">01</text>
+    <text x="15" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Triton / MLIR</text>
+    <text x="15" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Source AST &amp; Dialects</text>
+    <text x="15" y="92" font-family="monospace" font-size="10" fill="#38bdf8">TTIR -&gt; TTGIR</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 220 120 L 245 120" stroke="url(#arrowGrad)" stroke-width="3" marker-end="url(#arrowhead)" />
+
+  <!-- Step 2: Optimization Engine -->
+  <g transform="translate(255, 65)">
+    <rect width="180" height="110" rx="10" fill="#1e293b" stroke="url(#stepGrad2)" stroke-width="2" />
+    <rect x="15" y="15" width="30" height="20" rx="4" fill="#2563eb" />
+    <text x="30" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">02</text>
+    <text x="15" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">LLVM Pass Engine</text>
+    <text x="15" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">SROA + InstCombine</text>
+    <text x="15" y="92" font-family="monospace" font-size="10" fill="#60a5fa">-55.4% LLVM IR Ops</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 445 120 L 470 120" stroke="url(#arrowGrad)" stroke-width="3" />
+
+  <!-- Step 3: PTX & CUDA Execution -->
+  <g transform="translate(480, 65)">
+    <rect width="180" height="110" rx="10" fill="#1e293b" stroke="url(#stepGrad3)" stroke-width="2" />
+    <rect x="15" y="15" width="30" height="20" rx="4" fill="#7c3aed" />
+    <text x="30" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">03</text>
+    <text x="15" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">NVPTX Codegen</text>
+    <text x="15" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">128-bit ld.global.v4</text>
+    <text x="15" y="92" font-family="monospace" font-size="10" fill="#a78bfa">4x Memory Reduction</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 670 120 L 695 120" stroke="url(#arrowGrad)" stroke-width="3" />
+
+  <!-- Step 4: Hardware Driver Profiler -->
+  <g transform="translate(705, 65)">
+    <rect width="180" height="110" rx="10" fill="#1e293b" stroke="url(#stepGrad4)" stroke-width="2" />
+    <rect x="15" y="15" width="30" height="20" rx="4" fill="#059669" />
+    <text x="30" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">04</text>
+    <text x="15" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">CUDA Events &amp; Driver</text>
+    <text x="15" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">cuEventElapsedTime</text>
+    <text x="15" y="92" font-family="monospace" font-size="10" fill="#34d399">160/160 Real GPU Runs</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <path d="M 895 120 L 920 120" stroke="url(#arrowGrad)" stroke-width="3" />
+
+  <!-- Step 5: Diagnosis & Optimization -->
+  <g transform="translate(930, 65)">
+    <rect width="140" height="110" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+    <rect x="15" y="15" width="30" height="20" rx="4" fill="#0284c7" />
+    <text x="30" y="29" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">05</text>
+    <text x="15" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Roofline Rules</text>
+    <text x="15" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Bottleneck Report</text>
+    <text x="15" y="92" font-family="monospace" font-size="10" fill="#38bdf8">15.4% Cost MAPE</text>
+  </g>
+</svg>
