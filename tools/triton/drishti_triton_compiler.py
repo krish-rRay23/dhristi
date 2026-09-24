@@ -131,6 +131,43 @@ def layernorm_kernel(
     norm = (x - mean) * rstd * gamma + beta
     tl.store(out_row_start_ptr + cols, norm, mask=mask)
 
+@triton.jit
+def gemm_simple_kernel(
+    x_ptr,
+    y_ptr,
+    output_ptr,
+    n_elements,
+    BLOCK_SIZE: tl.constexpr,
+):
+    pid = tl.program_id(axis=0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+    x = tl.load(x_ptr + offsets, mask=mask, other=0.0)
+    y = tl.load(y_ptr + offsets, mask=mask, other=0.0)
+    added = x * y + 0.5 * x
+    tl.store(output_ptr + offsets, added, mask=mask)
+
+@triton.jit
+def attention_simple_kernel(
+    q_ptr,
+    k_ptr,
+    v_ptr,
+    output_ptr,
+    n_elements,
+    BLOCK_SIZE: tl.constexpr,
+):
+    pid = tl.program_id(axis=0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+    q = tl.load(q_ptr + offsets, mask=mask, other=0.0)
+    k = tl.load(k_ptr + offsets, mask=mask, other=0.0)
+    v = tl.load(v_ptr + offsets, mask=mask, other=0.0)
+    attn = q * k * 0.125
+    out = attn * v
+    tl.store(output_ptr + offsets, out, mask=mask)
+
 KERNELS = {
     "fused_add_relu": (
         fused_add_relu_kernel,
@@ -166,7 +203,37 @@ KERNELS = {
         layernorm_kernel,
         {"BLOCK_SIZE": 2048},
         {"x_ptr": "*fp32", "output_ptr": "*fp32", "gamma_ptr": "*fp32", "beta_ptr": "*fp32", "N": "i32", "eps": "fp32"},
-    )
+    ),
+    "gemm_small": (
+        gemm_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"x_ptr": "*fp32", "y_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "gemm_medium": (
+        gemm_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"x_ptr": "*fp32", "y_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "gemm_large": (
+        gemm_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"x_ptr": "*fp32", "y_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "attn_short": (
+        attention_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"q_ptr": "*fp32", "k_ptr": "*fp32", "v_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "attn_medium": (
+        attention_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"q_ptr": "*fp32", "k_ptr": "*fp32", "v_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
+    "attn_long": (
+        attention_simple_kernel,
+        {"BLOCK_SIZE": 256},
+        {"q_ptr": "*fp32", "k_ptr": "*fp32", "v_ptr": "*fp32", "output_ptr": "*fp32", "n_elements": "i32"},
+    ),
 }
 
 def compile_workload(workload_name="fused_add_relu", block_size=256, num_warps=4, num_stages=2, arch=86):

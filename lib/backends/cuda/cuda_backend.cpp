@@ -983,10 +983,14 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
     }
 
     const bool is_reduction = (cfg.workload_name == "reduction");
+    const bool is_layernorm = (cfg.workload_name == "layernorm");
+    const bool is_attn = (cfg.workload_name.rfind("attn", 0) == 0);
+    const bool is_gemm = (cfg.workload_name.rfind("gemm", 0) == 0);
+
     const std::size_t out_elements = is_reduction ? static_cast<std::size_t>(cfg.grid_size) : n;
     const std::size_t out_words = out_elements * sizeof(float);
 
-    DevPtr dev_a = 0, dev_b = 0, dev_out = 0;
+    DevPtr dev_a = 0, dev_b = 0, dev_v = 0, dev_out = 0;
     rc = d.memAlloc(&dev_a, words);
     if (rc != kSuccess) return fail("cuMemAlloc failed for input A");
     g.bufs.push_back(dev_a);
@@ -997,12 +1001,19 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
         g.bufs.push_back(dev_b);
     }
 
+    if (is_attn) {
+        rc = d.memAlloc(&dev_v, words);
+        if (rc != kSuccess) return fail("cuMemAlloc failed for input V");
+        g.bufs.push_back(dev_v);
+    }
+
     rc = d.memAlloc(&dev_out, out_words);
     if (rc != kSuccess) return fail("cuMemAlloc failed for output");
     g.bufs.push_back(dev_out);
 
     std::vector<float> host_a(n);
     std::vector<float> host_b(is_reduction ? 0 : n);
+    std::vector<float> host_v(is_attn ? n : 0);
     std::vector<float> host_out(out_elements, 0.0f);
     std::vector<float> host_expected(out_elements, 0.0f);
 
@@ -1011,11 +1022,21 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
         if (!is_reduction) {
             host_b[i] = -0.5f + 0.02f * static_cast<float>(i % 23);
         }
+        if (is_attn) {
+            host_v[i] = 0.8f + 0.03f * static_cast<float>(i % 19);
+        }
     }
 
-    const bool is_layernorm = (cfg.workload_name == "layernorm");
-
-    if (cfg.workload_name == "fused_add_relu") {
+    if (is_attn) {
+        for (std::size_t i = 0; i < n; ++i) {
+            float attn = host_a[i] * host_b[i] * 0.125f;
+            host_expected[i] = attn * host_v[i];
+        }
+    } else if (is_gemm) {
+        for (std::size_t i = 0; i < n; ++i) {
+            host_expected[i] = host_a[i] * host_b[i] + 0.5f * host_a[i];
+        }
+    } else if (cfg.workload_name == "fused_add_relu") {
         for (std::size_t i = 0; i < n; ++i) {
             float sum = host_a[i] + host_b[i];
             host_expected[i] = (sum > 0.0f) ? sum : 0.0f;
@@ -1073,6 +1094,10 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
         rc = d.cpyHtoD(dev_b, host_b.data(), words);
         if (rc != kSuccess) return fail("HtoD failed for input B: " + err_text(d, rc));
     }
+    if (is_attn) {
+        rc = d.cpyHtoD(dev_v, host_v.data(), words);
+        if (rc != kSuccess) return fail("HtoD failed for input V: " + err_text(d, rc));
+    }
     const auto t1 = std::chrono::steady_clock::now();
     const double h2d_ms = std::chrono::duration<double, std::milli>(t1 - t0).count();
 
@@ -1101,10 +1126,11 @@ bool run_triton_kernel(const TritonLaunchConfig& cfg, TritonRunResult& out,
         d.cpyHtoD(dev_beta, h_beta.data(), words);
     }
 
+    void* args_attn[7]      = {&dev_a, &dev_b, &dev_v, &dev_out, &n_elem_i32, &dev_scratch0, &dev_scratch1};
     void* args_reduction[5] = {&dev_a, &dev_out, &n_elem_i32, &dev_scratch0, &dev_scratch1};
     void* args_binary[6]    = {&dev_a, &dev_b, &dev_out, &n_elem_i32, &dev_scratch0, &dev_scratch1};
     void* args_layernorm[8] = {&dev_a, &dev_out, &dev_gamma, &dev_beta, &layernorm_N, &eps_f32, &dev_scratch0, &dev_scratch1};
-    void** args = is_reduction ? args_reduction : (is_layernorm ? args_layernorm : args_binary);
+    void** args = is_attn ? args_attn : (is_reduction ? args_reduction : (is_layernorm ? args_layernorm : args_binary));
 
     // Warmup launch
     rc = d.launch(kernel_fn, static_cast<unsigned>(cfg.grid_size), 1, 1,

@@ -248,6 +248,12 @@ def run_workload_experiment(
 
         # Map workload_id to Drishti C++ Triton workload names
         drishti_workload_map = {
+            "gemm_small": "gemm_small",
+            "gemm_medium": "gemm_medium",
+            "gemm_large": "gemm_large",
+            "attn_short": "attn_short",
+            "attn_medium": "attn_medium",
+            "attn_long": "attn_long",
             "fused_add_relu": "fused_add_relu",
             "fused_add_mul_gelu": "fused_add_mul_gelu",
             "reduction": "reduction",
