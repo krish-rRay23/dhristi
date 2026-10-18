@@ -2,7 +2,6 @@
 
 Dhristi: Hardware-Aware ML Compiler Performance Intelligence
 
-[![CI](https://github.com/krish-rRay23/Drishti/actions/workflows/ci.yml/badge.svg)](https://github.com/krish-rRay23/Drishti/actions/workflows/ci.yml)
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
 ![LLVM](https://img.shields.io/badge/LLVM-22.0+-yellow.svg)
 ![CUDA](https://img.shields.io/badge/CUDA-11.0+-green.svg)
