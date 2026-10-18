@@ -237,14 +237,49 @@ KERNELS = {
 }
 
 def compile_workload(workload_name="fused_add_relu", block_size=256, num_warps=4, num_stages=2, arch=86):
-    if workload_name not in KERNELS:
+    if workload_name in KERNELS:
+        fn, constexprs, signature = KERNELS[workload_name]
+        constexprs = dict(constexprs)
+        if workload_name == "layernorm" and block_size == 256:
+            block_size = 2048
+        constexprs["BLOCK_SIZE"] = block_size
+    elif os.path.isfile(workload_name):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("custom_user_kernel", workload_name)
+        if spec is None or spec.loader is None:
+            raise ValueError(f"Could not load Python file: {workload_name}")
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        fn = None
+        # First check for JITFunction
+        for attr_name in dir(mod):
+            obj = getattr(mod, attr_name)
+            if hasattr(obj, "fn") and hasattr(obj, "arg_names"):
+                fn = obj
+                break
+        if fn is None:
+            for attr_name in dir(mod):
+                obj = getattr(mod, attr_name)
+                if callable(obj) and not attr_name.startswith("__") and not isinstance(obj, type):
+                    fn = obj
+                    break
+        if fn is None:
+            raise ValueError(f"No kernel function found in {workload_name}")
+
+        constexprs = {"BLOCK_SIZE": block_size}
+        signature = {}
+        arg_names = getattr(fn, "arg_names", [])
+        if not arg_names and hasattr(fn, "__code__"):
+            arg_names = list(fn.__code__.co_varnames[:fn.__code__.co_argcount])
+        for arg in arg_names:
+            if "BLOCK_SIZE" in arg or "GROUP_SIZE" in arg or arg.isupper():
+                constexprs[arg] = block_size
+            elif "ptr" in arg or arg.endswith("_ptr") or arg in ["x", "y", "output", "out", "a", "b", "c", "q", "k", "v"]:
+                signature[arg] = "*fp32"
+            else:
+                signature[arg] = "i32"
+    else:
         raise ValueError(f"Unknown workload: {workload_name}. Available: {list(KERNELS.keys())}")
-    
-    fn, constexprs, signature = KERNELS[workload_name]
-    constexprs = dict(constexprs)
-    if workload_name == "layernorm" and block_size == 256:
-        block_size = 2048
-    constexprs["BLOCK_SIZE"] = block_size
 
     target = GPUTarget("cuda", arch, 32)
 

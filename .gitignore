@@ -50,3 +50,6 @@ __pycache__/
 dist/
 *.tar.gz
 *.zip
+!assets/paper/*.zip
+*.egg-info/
+.pytest_cache/

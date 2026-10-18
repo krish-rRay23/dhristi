@@ -171,7 +171,7 @@ Evaluation across **NVIDIA Tesla T4** (`sm_75`, 16GB VRAM, Turing) and **NVIDIA 
 | **LayerNorm** | $128 \times 2048$ elements | **`5.27×`** | RTX 3050 (`sm_86`) | Single-pass fused mean/variance calculation |
 | **Fused GELU** | $262,144$ elements | **`2.52×`** | RTX 3050 (`sm_86`) | In-register GELU evaluation |
 
-> **Audit Policy:** Every record in the 160-cell matrix ([`journal_experiment_results.json`](journal_experiment_results.json)) is backed by hardware CUDA Event timing (`cuEventElapsedTime`) and host output verification (`max_abs_error <= 1e-3`).
+> **Audit Policy:** Every record in the 160-cell matrix ([`journal_experiment_results.json`](assets/data/journal_experiment_results.json)) is backed by hardware CUDA Event timing (`cuEventElapsedTime`) and host output verification (`max_abs_error <= 1e-3`).
 
 ---
 
@@ -201,6 +201,90 @@ ninja -C build-clang
 
 # Execute test suite (64/64 tests pass)
 ctest --test-dir build-clang --output-on-failure
+```
+
+---
+
+## 🐍 Python CLI & API Quick Start
+
+Dṛṣṭi provides a production-grade, installable Python CLI and developer API that wraps the high-performance native C++ compiler and benchmark engines without modifying underlying compiler behavior.
+
+### 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/krish-rRay23/Drishti.git
+cd Drishti
+
+# Install in development / editable mode
+pip install -e .
+
+# Or build and install wheel locally
+pip wheel --no-deps -w dist .
+pip install dist/drishti-0.1.0-py3-none-any.whl
+```
+
+### 💻 Command-Line Interface (CLI)
+
+The `drishti` console entry point provides end-to-end diagnostics, lowering analysis, profiling, bottleneck diagnosis, and standalone HTML reports:
+
+```bash
+# 1. System Health & Environment Check (Python, Triton, LLVM/MLIR, CUDA, GPU, NCU)
+drishti doctor
+drishti doctor --json
+
+# 2. Kernel Lowering Analysis across AST -> TTIR -> TTGIR -> LLVM -> PTX
+drishti analyze examples/fused_add_relu.py --show-ir
+drishti analyze examples/fused_add_relu.py --json
+
+# 3. GPU Micro-Profiling (Latency, Effective Bandwidth, TFLOPS)
+drishti profile examples/fused_add_relu.py --repeats 10
+drishti profile examples/fused_add_relu.py --json
+
+# 4. Root-Cause Bottleneck Diagnosis & Recommendations
+drishti diagnose examples/fused_add_relu.py
+drishti diagnose examples/fused_add_relu.py --json
+
+# 5. Generalization Benchmark Suite (5 Workloads with Rank Matching)
+drishti benchmark
+drishti benchmark --journal --json
+
+# 6. Generate Standalone Interactive HTML Performance Report
+drishti report examples/fused_add_relu.py --output fused_report.html
+```
+
+### 🚀 Python Developer API
+
+```python
+import drishti
+
+# 1. Health check
+doc = drishti.doctor()
+print(doc.summary)
+
+# 2. Analyze Triton kernel lowering and codegen
+report = drishti.analyze("examples/fused_add_relu.py", block_size=256, num_elements=65536)
+print(f"Classification  : {report.codegen.classification}")
+print(f"Measured Latency: {report.gpu.measured_kernel_ms:.4f} ms")
+print(f"Effective VRAM  : {report.gpu.gbps_effective:.2f} GB/s")
+
+# 3. Profile GPU execution
+prof = drishti.profile("examples/fused_add_relu.py", repeats=10)
+print(f"Kernel latency  : {prof.kernel_ms_avg:.4f} ms")
+
+# 4. Diagnose bottlenecks
+diag = drishti.diagnose("examples/fused_add_relu.py")
+print(f"Primary bottleneck: {diag.primary_bottleneck}")
+for finding in diag.findings:
+    print(f" - [{finding.severity}] {finding.title} ({finding.confidence*100:.0f}%)")
+
+# 5. Run standardized benchmark suite
+bench = drishti.benchmark()
+for w in bench.workloads:
+    print(f"{w.name}: speedup {w.speedup_factor:.2f}x (Rank match: {w.rank_matched})")
+
+# 6. Generate standalone interactive HTML report
+drishti.generate_report(report, output_path="drishti_report.html")
 ```
 
 ---
