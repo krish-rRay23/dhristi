@@ -1,6 +1,6 @@
 ![Dṛṣṭi Performance Banner](assets/drishti_hero_banner.svg)
 
-# Dṛṣṭi (Drishti): Hardware-Aware ML Compiler Performance Intelligence
+Dhristi: Hardware-Aware ML Compiler Performance Intelligence
 
 [![CI](https://github.com/krish-rRay23/Drishti/actions/workflows/ci.yml/badge.svg)](https://github.com/krish-rRay23/Drishti/actions/workflows/ci.yml)
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
@@ -8,32 +8,10 @@
 ![CUDA](https://img.shields.io/badge/CUDA-11.0+-green.svg)
 ![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
-> **Dṛṣṭi** (*Sanskrit: sight / insight*) is a high-performance C++20 hardware-aware ML compiler intelligence framework. It correlates static compiler Intermediate Representation (IR) transformations against live empirical GPU execution telemetry, analytical roofline cost models, and automated bottleneck diagnosis across **Triton 3.8.0**, **MLIR**, **LLVM IR**, and **NVPTX / AMD ROCm** target pipelines.
+> **Dhristi** is a high-performance C++20 hardware-aware ML compiler intelligence framework. It correlates static compiler Intermediate Representation (IR) transformations against live empirical GPU execution telemetry, analytical roofline cost models, and automated bottleneck diagnosis across **Triton 3.8.0**, **MLIR**, **LLVM IR**, and **NVPTX / AMD ROCm** target pipelines.
 
 ---
 
-## ⚡ Performance at a Glance
-
-| Metric | Measured Benchmark Value | Target / Component | Experimental Context |
-| :--- | :---: | :--- | :--- |
-| **LLVM-IR Instruction Reduction** | **`55.4%`** | `SROA` + `InstCombine` + `DCE` | MLIR-lowered optimization passes |
-| **Triton Kernel Latency Reduction** | **`32.8%`** | 128-bit `ld.global.v4.b32` | `vector_add_vectorized` vs scalar |
-| **VRAM Bandwidth Growth** | **`+48.8%`** | Memory Coalescing | $16.20 \rightarrow 24.11\text{ GB/s}$ throughput |
-| **Warp Memory Instruction Reduction** | **`4×`** | 32 $\rightarrow$ 8 ops/warp | 128-bit vector transaction width |
-| **Peak Generalization Speedup** | **`6.24×`** | Fused Elementwise vs Unfused | 5-Workload Generalization Suite |
-| **FlashAttention Peak Speedup** | **`2.07×`** | FlashAttn Long ($N=2048$) | Tesla T4 (`sm_75`, Google Colab) |
-| **GEMM Peak Speedup** | **`1.98×`** | GEMM Small ($256^3$) | RTX 3050 (`sm_86`, Ampere GPU) |
-| **RTX 3050 LayerNorm Speedup** | **`5.27×`** | LayerNorm ($128 \times 2048$) | Native C++ CUDA Driver API |
-| **RTX 3050 Reduction Speedup** | **`4.72×`** | Sum Reduction ($1\text{M}$ elements) | Native C++ CUDA Driver API |
-| **RTX 3050 Fused GELU Speedup** | **`2.52×`** | Fused Add-Mul-GELU ($262\text{K}$) | Native C++ CUDA Driver API |
-| **Cost-Model Predictive Precision** | **`15.4% MAPE`** | Calibrated Analytical Roofline | Measured vs predicted latency |
-| **Bottleneck Classification Accuracy**| **`100%`** | Memory vs Compute Dominance | Zero false positive classifications |
-| **Journal Matrix Resolution** | **`160 / 160`** | 10 Workloads $\times$ 16 Configs | **100% Real Hardware GPU Runs** |
-| **NVIDIA GPU Microarchitectures** | **`2`** | Tesla T4 (`sm_75`) + RTX 3050 (`sm_86`) | Turing & Ampere Architecture |
-| **Evaluated Workload Families** | **`10`** | GEMM, FlashAttn, Fusion, Norm | Full domain coverage |
-| **Completed Research Studies** | **`7`** | Codegen, Fusion, Cost, Ablations | Comprehensive empirical scope |
-
----
 
 ## 🔄 Compiler & Profiling Pipeline Architecture
 
@@ -103,6 +81,28 @@ Dṛṣṭi's rules engine automatically identifies under-occupied launches, exc
 
 ---
 
+## ⚡ Performance at a Glance
+
+| Metric | Measured Benchmark Value | Target / Component | Experimental Context |
+| :--- | :---: | :--- | :--- |
+| **LLVM-IR Instruction Reduction** | **`55.4%`** | `SROA` + `InstCombine` + `DCE` | MLIR-lowered optimization passes |
+| **Triton Kernel Latency Reduction** | **`32.8%`** | 128-bit `ld.global.v4.b32` | `vector_add_vectorized` vs scalar |
+| **VRAM Bandwidth Growth** | **`+48.8%`** | Memory Coalescing | $16.20 \rightarrow 24.11\text{ GB/s}$ throughput |
+| **Warp Memory Instruction Reduction** | **`4×`** | 32 $\rightarrow$ 8 ops/warp | 128-bit vector transaction width |
+| **Peak Generalization Speedup** | **`6.24×`** | Fused Elementwise vs Unfused | 5-Workload Generalization Suite |
+| **FlashAttention Peak Speedup** | **`2.07×`** | FlashAttn Long ($N=2048$) | Tesla T4 (`sm_75`, Google Colab) |
+| **GEMM Peak Speedup** | **`1.98×`** | GEMM Small ($256^3$) | RTX 3050 (`sm_86`, Ampere GPU) |
+| **RTX 3050 LayerNorm Speedup** | **`5.27×`** | LayerNorm ($128 \times 2048$) | Native C++ CUDA Driver API |
+| **RTX 3050 Reduction Speedup** | **`4.72×`** | Sum Reduction ($1\text{M}$ elements) | Native C++ CUDA Driver API |
+| **RTX 3050 Fused GELU Speedup** | **`2.52×`** | Fused Add-Mul-GELU ($262\text{K}$) | Native C++ CUDA Driver API |
+| **Cost-Model Predictive Precision** | **`15.4% MAPE`** | Calibrated Analytical Roofline | Measured vs predicted latency |
+| **Bottleneck Classification Accuracy**| **`100%`** | Memory vs Compute Dominance | Zero false positive classifications |
+| **Journal Matrix Resolution** | **`160 / 160`** | 10 Workloads $\times$ 16 Configs | **100% Real Hardware GPU Runs** |
+| **NVIDIA GPU Microarchitectures** | **`2`** | Tesla T4 (`sm_75`) + RTX 3050 (`sm_86`) | Turing & Ampere Architecture |
+| **Evaluated Workload Families** | **`10`** | GEMM, FlashAttn, Fusion, Norm | Full domain coverage |
+| **Completed Research Studies** | **`7`** | Codegen, Fusion, Cost, Ablations | Comprehensive empirical scope |
+
+---
 ## 📈 Timeline of 7 Empirical Research Studies
 
 ```mermaid
