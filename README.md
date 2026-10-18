@@ -1,4 +1,4 @@
-![Dṛṣṭi Performance Banner](assets/drishti_hero_banner.svg)
+![Dhristi Performance Banner](assets/drishti_hero_banner.svg)
 
 Dhristi: Hardware-Aware ML Compiler Performance Intelligence
 
@@ -11,10 +11,50 @@ Dhristi: Hardware-Aware ML Compiler Performance Intelligence
 
 ---
 
+## 🎯 Why Dhristi?
+
+Current ML compilers (such as PyTorch `torch.compile`, Triton, and XLA) make high-level optimization choices—such as block tile sizing, loop unrolling, and operator fusion—without direct feedback from low-level hardware performance counters.
+
+Dhristi bridges this gap by:
+1. **Correlating IR Attributes to Telemetry:** Directly linking compiler AST attributes (e.g. `sizePerThread`) to physical GPU metrics (latency, bandwidth, memory instruction count).
+2. **Eliminating Autotuning Search Overhead:** Using static graph inspection to select tile shapes and vector widths without spending hundreds of milliseconds on brute-force autotuned kernel trials.
+3. **Providing Cross-Vendor Bottleneck Intelligence:** Offering roofline bottleneck classification across both NVIDIA CUDA and AMD ROCm architectures.
+
+---
+
+## 🏛️ System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Frontends ["Frontends & Workload Inputs"]
+        F1["Triton Python Source (JIT)"]
+        F2["MLIR Modules (.mlir)"]
+    end
+
+    subgraph CoreEngine ["Dhristi Core Compiler Engine"]
+        C1["Triton Compiler Bridge\n(AST -> TTIR -> TTGIR -> PTX)"]
+        C2["MLIR Analysis Context\n(Op Histogram & CFG Analysis)"]
+        C3["LLVM Pass Pipeline\n(SROA + InstCombine + DCE)"]
+    end
+
+    subgraph ProfilingEngine ["Hardware Telemetry & Performance Intelligence"]
+        P1["C++ CUDA Driver API Backend\n(cuModuleLoadDataEx + cuEventElapsedTime)"]
+        P2["Roofline Cost Model\n(15.4% MAPE Calibration Engine)"]
+        P3["Bottleneck Rules Engine\n(Cross-Vendor CUDA & ROCm Rules)"]
+    end
+
+    F1 --> C1
+    F2 --> C2
+    C2 --> C3
+    C1 --> P1
+    C3 --> P1
+    P1 --> P2
+    P2 --> P3
+```
 
 ## 🔄 Compiler & Profiling Pipeline Architecture
 
-![Dṛṣṭi Pipeline Visual](assets/drishti_pipeline_flow.svg)
+![Dhristi Pipeline Visual](assets/drishti_pipeline_flow.svg)
 
 ---
 
@@ -37,7 +77,7 @@ Adding explicit alignment constraints (`tl.max_contiguous`, `tl.multiple_of`) al
 
 > **Core Insight:** Unoptimized MLIR lowerings introduce redundant stack scalar allocations (`alloca`) and dead control flow paths.
 
-By executing standardized LLVM pass chains (`sroa` $\rightarrow$ `instcombine` $\rightarrow$ `simplifycfg` $\rightarrow$ `dce`), Dṛṣṭi achieves:
+By executing standardized LLVM pass chains (`sroa` $\rightarrow$ `instcombine` $\rightarrow$ `simplifycfg` $\rightarrow$ `dce`), Dhristi achieves:
 * **$55.4\%$ reduction** in total LLVM IR instruction count.
 * Complete elimination of stack memory allocation overhead by promoting temporaries into SSA registers (`sroa`).
 </details>
@@ -75,7 +115,7 @@ Fusing elementwise `add` and `relu` passes into a single Triton kernel eliminate
 
 > **Core Insight:** Hardware-agnostic bottleneck rules detect performance limiters across NVIDIA CUDA and AMD ROCm.
 
-Dṛṣṭi's rules engine automatically identifies under-occupied launches, excess memory traffic, transfer-dominated workflows, and register pressure limiters across both NVIDIA (`sm_75`, `sm_86`) and AMD ROCm (`gfx90a`) target profiles.
+Dhristi's rules engine automatically identifies under-occupied launches, excess memory traffic, transfer-dominated workflows, and register pressure limiters across both NVIDIA (`sm_75`, `sm_86`) and AMD ROCm (`gfx90a`) target profiles.
 </details>
 
 ---
@@ -106,7 +146,7 @@ Dṛṣṭi's rules engine automatically identifies under-occupied launches, exc
 
 ```mermaid
 timeline
-    title Dṛṣṭi 7 Empirical Research Studies
+    title Dhristi 7 Empirical Research Studies
     Study 1 : Triton 1D Vectorization Codegen Case Study : 128-bit ld.global.v4.b32 (1.49x speedup, 48.8% BW growth)
     Study 2 : LLVM IR Pass Optimization Study : 55.4% instruction reduction via SROA + InstCombine
     Study 3 : Kernel Fusion & Memory Round-Trip Savings : Single-pass fusion vs global VRAM writes (29.4% speedup)
@@ -135,46 +175,6 @@ Evaluation across **NVIDIA Tesla T4** (`sm_75`, 16GB VRAM, Turing) and **NVIDIA 
 
 ---
 
-## 🎯 Why Dṛṣṭi?
-
-Current ML compilers (such as PyTorch `torch.compile`, Triton, and XLA) make high-level optimization choices—such as block tile sizing, loop unrolling, and operator fusion—without direct feedback from low-level hardware performance counters.
-
-Dṛṣṭi bridges this gap by:
-1. **Correlating IR Attributes to Telemetry:** Directly linking compiler AST attributes (e.g. `sizePerThread`) to physical GPU metrics (latency, bandwidth, memory instruction count).
-2. **Eliminating Autotuning Search Overhead:** Using static graph inspection to select tile shapes and vector widths without spending hundreds of milliseconds on brute-force autotuned kernel trials.
-3. **Providing Cross-Vendor Bottleneck Intelligence:** Offering roofline bottleneck classification across both NVIDIA CUDA and AMD ROCm architectures.
-
----
-
-## 🏛️ System Architecture
-
-```mermaid
-flowchart TD
-    subgraph Frontends ["Frontends & Workload Inputs"]
-        F1["Triton Python Source (JIT)"]
-        F2["MLIR Modules (.mlir)"]
-    end
-
-    subgraph CoreEngine ["Dṛṣṭi Core Compiler Engine"]
-        C1["Triton Compiler Bridge\n(AST -> TTIR -> TTGIR -> PTX)"]
-        C2["MLIR Analysis Context\n(Op Histogram & CFG Analysis)"]
-        C3["LLVM Pass Pipeline\n(SROA + InstCombine + DCE)"]
-    end
-
-    subgraph ProfilingEngine ["Hardware Telemetry & Performance Intelligence"]
-        P1["C++ CUDA Driver API Backend\n(cuModuleLoadDataEx + cuEventElapsedTime)"]
-        P2["Roofline Cost Model\n(15.4% MAPE Calibration Engine)"]
-        P3["Bottleneck Rules Engine\n(Cross-Vendor CUDA & ROCm Rules)"]
-    end
-
-    F1 --> C1
-    F2 --> C2
-    C2 --> C3
-    C1 --> P1
-    C3 --> P1
-    P1 --> P2
-    P2 --> P3
-```
 
 ---
 
@@ -207,11 +207,11 @@ ctest --test-dir build-clang --output-on-failure
 
 ## 🔬 Limitations & Scientific Scope
 
-* **Performance Counter Security Limits (`ERR_NVGPUCTRPERM`):** Querying hardware performance counters via NCU / CUPTI requires administrative privileges under Windows WDDM or `NVreg_RestrictProfilingToAdminUsers=0` under Linux. When administrative privileges are unavailable, Dṛṣṭi records dynamic occupancy as `N/A` with complete provenance tracking without altering baseline latency measurements.
+* **Performance Counter Security Limits (`ERR_NVGPUCTRPERM`):** Querying hardware performance counters via NCU / CUPTI requires administrative privileges under Windows WDDM or `NVreg_RestrictProfilingToAdminUsers=0` under Linux. When administrative privileges are unavailable, Dhristi records dynamic occupancy as `N/A` with complete provenance tracking without altering baseline latency measurements.
 * **Scope of Speedup Claims:** Reported peak speedups represent the best observed performance gains under optimal compiler transformations relative to unoptimized baselines. Average speedups vary based on tensor size and memory access patterns.
 
 ---
 
 ## 📄 License
 
-Dṛṣṭi is open-source software licensed under the [Apache 2.0 License](LICENSE).
+Dhristi is open-source software licensed under the [Apache 2.0 License](LICENSE).
