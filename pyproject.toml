@@ -63,3 +63,9 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 drishti = ["bin/*", "templates/*"]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+pythonpath = ["src"]
+addopts = "-ra"
